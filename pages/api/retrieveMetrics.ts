@@ -20,7 +20,6 @@ const getMetrics = async (req: NextApiRequest, res: NextApiResponse) => {
       [metricKey: string]: string;
     }
 
-
     // Grab redis data metrics 
     const data = await redis.info();
     // Returned data string from Redis to be cleaned up and passed into an array. The data in the array should be a string. 

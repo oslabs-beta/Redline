@@ -22,11 +22,13 @@
     "@visx/shape": "^2.17.0",
     "@visx/tooltip": "^2.17.0",
     "@visx/visx": "^2.17.0",
+    "chart.js": "^4.1.1",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "ioredis": "^5.2.4",
     "next": "13.1.1",
     "react": "18.2.0",
+    "react-chartjs-2": "^5.1.0",
     "react-dom": "18.2.0",
     "typescript": "4.9.4"
   }
