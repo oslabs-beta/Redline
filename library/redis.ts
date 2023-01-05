@@ -1,8 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import Redis from "ioredis";
-import next from "next";
 
-const getMetrics = async (req: NextApiRequest, res: NextApiResponse) => {
+export const getMetrics = async (req: NextApiRequest, res: NextApiResponse) => {
   // deconstruct the hostname, port and password from the frontend request body
   const { host, port, password } = req.body;
 
@@ -44,5 +43,4 @@ const getMetrics = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default getMetrics;
 
