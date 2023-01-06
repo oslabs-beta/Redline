@@ -1,0 +1,14 @@
+#addEndpointButton {
+    width: 25px;
+    height: auto; 
+    border: none; 
+    outline: none; 
+}
+
+.formContainer {
+    font-family: 'DM Serif Display', serif;
+    border-style: solid; 
+    border-color: #313614; 
+    padding: 10px;
+    display: inline-block
+}
