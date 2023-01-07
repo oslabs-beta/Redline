@@ -1,4 +1,8 @@
+import React from 'react';
 
 export default function NavBar() {
-  return <div>NavBar</div>
+  return <div className='navBarContainer'>
+    <nav className='navBarWrapper'></nav>
+
+  </div>
 }

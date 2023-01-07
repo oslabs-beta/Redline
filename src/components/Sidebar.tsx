@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
-// import { Inter } from '@next/font/google'
+import { BsTrash } from 'react-icons/bs';
+import { GrAddCircle } from 'react-icons/gr';
 
-// const inter = Inter({ subsets: ['latin'] })
 
-// const dM_Serif_Display = DM_Serif_Display({
-//   weight: '400',
-//   subsets: ['latin'],
-// });
 export default function Sidebar() {
   interface Endpoint {
     host: string;
@@ -22,13 +18,6 @@ export default function Sidebar() {
   const [nickname, setNickname] = useState('');
   // all endpoints that the user will enter will be stored below as an array of objects.
   const [endpoints, setEndpoints] = useState<Endpoint[]>([]);
-
-  /*
-    this is what would be stored in state for example: 
-    [
-      {host: 'localhost', port: '3000', password: 'codesmith', nickname: 'app2'},
-    {host: 'localhost', port: '8080', password: 'hello', nickname: 'app1'}]
-    */
 
   // when the form is submitted, it will trigger the function below.
   function handleFormSubmit(event: any) {
@@ -46,19 +35,32 @@ export default function Sidebar() {
     const previousEndpoints = endpoints;
     previousEndpoints.push(newEndpoint);
     setEndpoints(previousEndpoints);
-
-    // keeping this in here for now because it might be a good way to display the endpoints on the screen for users to toggle between
+  
     // set all endpoints in local storage.
     localStorage.setItem('allEndpoints', JSON.stringify(endpoints));
-    // which one is better below? recommend the first one because its easier to digest if another developer/user came into our codebase/looked at localstorage and could figure out what the key value pairs. more intuitive.
     localStorage.setItem(nickname, JSON.stringify(newEndpoint));
-    localStorage.setItem(nickname, `${host}, ${port}, ${password}`);
+  }
 
-    // when the button is clicked, it should add the nickname as a button below the form. 
+  // this ensures that the endpoints in local storage don't get rewritten upon refresh since it's drawing from state.
+  useEffect(() => {
+    const allEndpoints = localStorage.getItem('allEndpoints');
+    if (allEndpoints !== null) {
+      const parsedEndpoints = JSON.parse(allEndpoints);
+      setEndpoints(parsedEndpoints);
+    }
+  }, []);
+
+  // stores the most recently clicked on endpoint in localStorage so it can be spun up when metrics are displayed on page. 
+  function storeCurrentEndpoint(endpoint: string) {
+    endpoints.forEach((object) => {
+      if (Object.keys(object).find((key) => object['nickname'] === endpoint)) {
+        localStorage.setItem('currentEndpoint', JSON.stringify(object));
+      }
+    });
   }
 
   return (
-    <main>
+    <div>
       <section className='formContainer'>
         <form onSubmit={handleFormSubmit}>
           <label>
@@ -72,7 +74,8 @@ export default function Sidebar() {
                 setHost(event.target.value);
               }}
             />
-          </label>{' '}
+          </label>
+          <br />
           <br />
           <label>
             Port
@@ -85,20 +88,22 @@ export default function Sidebar() {
                 setPort(event.target.value);
               }}
             />
-          </label>{' '}
+          </label>
+          <br />
           <br />
           <label>
             Password
             <br />
             <input
-              type='text'
+              type='password'
               name='password'
               value={password}
               onChange={(event) => {
                 setPassword(event.target.value);
               }}
             />
-          </label>{' '}
+          </label>
+          <br />
           <br />
           <label>
             Nickname
@@ -111,19 +116,40 @@ export default function Sidebar() {
                 setNickname(event.target.value);
               }}
             />
-            <br />
           </label>
           <br />
-          {/* <input id='formButton' type='submit' value='Submit' /> */}
-          <button type='submit'>
-            <img
-              id='addEndpointButton'
-              alt='submit'
-              src='https://i.imgur.com/HvzMK75.png'
-            />
+          <br />
+          <button className='addEndpoint' type='submit' role='button'>
+            <GrAddCircle size={30} />
           </button>
         </form>
+        <div>
+          <br />
+          {
+            // when the button above is clicked, it adds an endpoint below the form. the endpoint is a clickable button. When clicked, the endpoint is stored in localStorage under 'currentEndpoint' so it can spin up metrics wherever thats happening. 
+            // ****still need to add the logic to delete an endpoint and spin up metrics when endpoint is clicked****
+            endpoints.map((object, index) => {
+              return (
+                <div className='endpointContainer' key={index}>
+                  <button className='delete' type='submit'>
+                    <BsTrash size={20} />
+                  </button>
+                  <button
+                    onClick={() => {
+                      storeCurrentEndpoint(object.nickname);
+                    }}
+                    className='eachEndpoint'
+                    type='submit'
+                  >
+                    {object.nickname}
+                  </button>
+                  <br />
+                </div>
+              );
+            })
+          }
+        </div>
       </section>
-    </main>
+    </div>
   );
 }
