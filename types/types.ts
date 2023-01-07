@@ -7,6 +7,8 @@ export interface MetricCollection {
   total_system_memory: number; //total cpu memory
   used_memory_dataset: number; // number in bytes
   used_memory_startup: number;
+  keyspace_hits: number;
+  keyspace_misses: number;
 }
 
 export interface Metrics {
@@ -21,6 +23,8 @@ export const Units: Units = {
   total_system_memory: 'bytes',
   used_memory_dataset: 'bytes',
   used_memory_startup: 'bytes',
+  keyspace_hits: 'hits',
+  keyspace_misses: 'misses',
 };
 
 interface Units {
