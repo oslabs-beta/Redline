@@ -5,21 +5,23 @@ Chart.register(ArcElement);
 
 interface pieProps {
   pieData: number[];
+  name: string;
+  labels: string[];
 }
 
-export default function PieGraph({ pieData }: pieProps): JSX.Element {
+export default function PieGraph(props: pieProps): JSX.Element {
   // loop through the data we recieve - we should get back an array of objects
   return (
     <div>
-      <h2>Memory Usage</h2>
+      <h2>{props.name}</h2>
       <Pie
         className='pie'
         datasetIdKey='byType'
         data={{
-          labels: ['memory used', 'memory remaining'],
+          labels: props.labels, //['memory used', 'memory remaining'],
           datasets: [
             {
-              data: pieData,
+              data: props.pieData,
               backgroundColor: [
                 '#3e95cd',
                 '#8e5ea2',

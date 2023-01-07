@@ -11,18 +11,30 @@ interface containerProps {
 export default function MetricContainer(props: containerProps): JSX.Element {
   const { metrics } = props;
   const pieMetric = metrics[metrics.length - 1];
-  let percentA;
-  let percentB;
+  let usedMem;
+  let hitRate;
   if (pieMetric) {
-    percentA =
+    console.log(pieMetric);
+    usedMem =
       pieMetric.used_memory /
       (pieMetric.used_memory_dataset - pieMetric.used_memory_startup);
-    percentB = 100 - percentA;
+    hitRate =
+      pieMetric.keyspace_hits /
+      (pieMetric.keyspace_hits + pieMetric.keyspace_misses);
   }
   return (
     <div>
-      <PieChart pieData={percentA && percentB ? [percentA, percentB] : [0]} />
       <LineGraph lineData={metrics.map((metric) => metric.used_memory)} />
+      <PieChart
+        pieData={usedMem ? [usedMem, 100 - usedMem] : [0]}
+        name='Memory Usage'
+        labels={['Memory Used', 'Memory Remaining']}
+      />
+      <PieChart
+        pieData={hitRate ? [hitRate, 100 - hitRate] : [0]}
+        name='Hit Rate'
+        labels={['Hits', 'Misses']}
+      />
       {/* <BarChart /> */}
     </div>
   );
