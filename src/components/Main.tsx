@@ -3,6 +3,7 @@ import axios from 'axios';
 import Sidebar from './Sidebar';
 import MetricContainer from './MetricContainer';
 import { MetricCollection } from '../../types/types';
+import NavBar from './NavBar'; 
 
 export default function Main() {
   /* Declare state that we pass down to sidebar. Sidebar is where the user is entering the endpoints and where the declared state will be updated.
@@ -59,6 +60,7 @@ export default function Main() {
     <div>
       <Sidebar />
       <MetricContainer metrics={metrics} />
+      <NavBar />
     </div>
   );
 }
