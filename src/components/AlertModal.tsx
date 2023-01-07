@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 
 type Props = {
   title: string;
@@ -27,16 +27,18 @@ export default function AlertModal({
   const preventAutoClose = (e: React.MouseEvent) => e.stopPropagation();
 
   return (
-    <div className="modal" onClick={preventAutoClose}>
-      <h3>{title}</h3>
-      <div className="modalContent">{children}</div>
-      <div className="actions">
-        <button className="togglebutton" onClick={confirmAndClose}>
-          Confirm
-        </button>
-        <button className="togglebutton" onClick={onClose}>
-          Cancel
-        </button>
+    <div className="modalOverlay" onClick={onClose}>
+      <div className="modal" onClick={preventAutoClose}>
+        <h3>{title}</h3>
+        <div className="modalContent">{children}</div>
+        <div className="actions">
+          <button className="togglebutton" onClick={confirmAndClose}>
+            Confirm
+          </button>
+          <button className="togglebutton" onClick={onClose}>
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );
