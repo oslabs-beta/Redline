@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import AlertModal from './AlertModal';
-import '../styles/modal.css';
 
 type Props = {
   data: number[];
