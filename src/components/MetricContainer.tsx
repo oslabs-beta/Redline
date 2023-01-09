@@ -23,7 +23,7 @@ export default function MetricContainer(props: containerProps): JSX.Element {
       (pieMetric.keyspace_hits + pieMetric.keyspace_misses);
   }
   return (
-    <div>
+    <div style={{ display: 'grid', gridTemplateAreas: `'line bar' 'pie pie` }}>
       <LineGraph lineData={metrics.map((metric) => metric.used_memory)} />
       <PieChart
         pieData={usedMem ? [usedMem, 100 - usedMem] : [0]}
