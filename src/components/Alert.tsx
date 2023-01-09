@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import AlertModal from './AlertModal';
+import { BsFillBellFill } from 'react-icons/bs'
 
 type Props = {
-  data: number[];
+  data: number[] | number[][];
 };
 
 // pass in datapoints from chart/graph component to props
@@ -34,9 +35,8 @@ export default function Alert({ data }: Props) {
           console.log('create alert clicked');
           setIsOpened(true);
         }}
-        id="create-alert-button"
       >
-        Create New Alert
+        <BsFillBellFill size={20} />
       </button>
       <AlertModal
         title="Create an Alert"
