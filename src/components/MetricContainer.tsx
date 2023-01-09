@@ -30,10 +30,10 @@ export default function MetricContainer(props: containerProps): JSX.Element {
         marginLeft: '5vw',
       }}
     >
-      <div style={{ gridTemplateAreas: 'line', width: '35vw' }}>
+      <div style={{ gridTemplateAreas: 'line', width: '30vw' }}>
         <LineGraph lineData={metrics.map((metric) => metric.used_memory)} />
       </div>
-      <div style={{ gridTemplateAreas: 'bar', width: '35vw' }}>
+      <div style={{ gridTemplateAreas: 'bar', width: '30vw' }}>
         <BarChart
           barData={metrics.map((metric) => [
             metric.used_memory,
@@ -43,14 +43,14 @@ export default function MetricContainer(props: containerProps): JSX.Element {
           labels={['Memory Used', 'Memory Available']}
         />
       </div>
-      <div style={{ gridTemplateAreas: 'bar', width: '35vw' }}>
+      <div style={{ gridTemplateAreas: 'bar', width: '20vw' }}>
         <PieChart
           pieData={usedMem ? [usedMem, 100 - usedMem] : [0]}
           name='Memory Usage'
           labels={['Memory Used', 'Memory Available']}
         />
       </div>
-      <div style={{ gridTemplateAreas: 'bar', width: '35vw' }}>
+      <div style={{ gridTemplateAreas: 'bar', width: '20vw' }}>
         <PieChart
           pieData={hitRate ? [hitRate, 100 - hitRate] : [0]}
           name='Hit Rate'
