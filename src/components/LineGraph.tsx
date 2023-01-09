@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { CategoryScale, Chart, registerables } from 'chart.js';
 import { setLabels } from 'react-chartjs-2/dist/utils';
 import { Line } from 'react-chartjs-2';
+import Alert from './Alert';
 
 Chart.register(...registerables);
 
@@ -51,6 +52,7 @@ export default function LineGraph({ lineData }: lineProps): JSX.Element {
           },
         }}
       />
+      <Alert data={lineData} />
     </div>
   );
 }
