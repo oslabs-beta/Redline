@@ -10,7 +10,7 @@ interface barProps {
   labels: string[];
 }
 
-export default function BarChart(props: barProps) {
+export default function BarChart({ barData, name, labels }: barProps) {
   const options = {
     responsive: true,
     scales: {
@@ -23,18 +23,18 @@ export default function BarChart(props: barProps) {
       },
     },
   };
-  const labels = ['-8.00', '-6.00', '-4.00', '-2.00'];
+  const x_axis = ['-8.00', '-6.00', '-4.00', '-2.00'];
   const data = {
     labels,
     datasets: [
       {
-        label: props.labels[0],
-        data: props.barData.map((arr) => arr[0]),
+        label: labels[0],
+        data: barData.map((arr) => arr[0]),
         backgroundColor: 'rgb(75, 192, 192)',
       },
       {
-        label: props.labels[1],
-        data: props.barData.map((arr) => arr[1]),
+        label: labels[1],
+        data: barData.map((arr) => arr[1]),
         backgroundColor: 'rgb(53, 162, 235)',
       },
       // {
@@ -52,9 +52,9 @@ export default function BarChart(props: barProps) {
 
   return (
     <div>
-      <h2>{props.name}</h2>
+      <h2>{name}</h2>
       <Bar options={options} data={data} />
-      <Alert data={props.barData} />
+      <Alert data={barData} />
     </div>
   );
 }

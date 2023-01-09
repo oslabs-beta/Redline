@@ -1,4 +1,7 @@
 .navBarContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #dee2e6;
   height: 50px;
   overflow: hidden;

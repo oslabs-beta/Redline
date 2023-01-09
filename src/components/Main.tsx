@@ -57,10 +57,12 @@ export default function Main() {
   // }
 
   return (
-    <div style={{ display: 'flex' }}>
-      <Sidebar />
-      <MetricContainer metrics={metrics} />
+    <div>
       <NavBar />
+      <div style={{ display: 'flex' }}>
+        <Sidebar />
+        <MetricContainer metrics={metrics} />
+      </div>
     </div>
   );
 }
