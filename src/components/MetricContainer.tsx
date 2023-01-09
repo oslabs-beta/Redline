@@ -22,26 +22,41 @@ export default function MetricContainer(props: containerProps): JSX.Element {
       (pieMetric.keyspace_hits + pieMetric.keyspace_misses);
   }
   return (
-    <div style={{ display: 'grid', gridTemplateAreas: `'line bar' 'pie pie` }}>
-      <LineGraph lineData={metrics.map((metric) => metric.used_memory)} />
-      <PieChart
-        pieData={usedMem ? [usedMem, 100 - usedMem] : [0]}
-        name='Memory Usage'
-        labels={['Memory Used', 'Memory Available']}
-      />
-      <PieChart
-        pieData={hitRate ? [hitRate, 100 - hitRate] : [0]}
-        name='Hit Rate'
-        labels={['Hits', 'Misses']}
-      />
-      <BarChart
-        barData={metrics.map((metric) => [
-          metric.used_memory,
-          metric.used_memory_rss - metric.used_memory,
-        ])}
-        name='Memory Usage'
-        labels={['Memory Used', 'Memory Available']}
-      />
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateAreas: `'line bar' 'pie pie'`,
+        gridTemplateColumns: '1fr 1fr',
+        marginLeft: '5vw',
+      }}
+    >
+      <div style={{ gridTemplateAreas: 'line', width: '35vw' }}>
+        <LineGraph lineData={metrics.map((metric) => metric.used_memory)} />
+      </div>
+      <div style={{ gridTemplateAreas: 'bar', width: '35vw' }}>
+        <BarChart
+          barData={metrics.map((metric) => [
+            metric.used_memory,
+            metric.used_memory_rss - metric.used_memory,
+          ])}
+          name='Memory Usage'
+          labels={['Memory Used', 'Memory Available']}
+        />
+      </div>
+      <div style={{ gridTemplateAreas: 'bar', width: '35vw' }}>
+        <PieChart
+          pieData={usedMem ? [usedMem, 100 - usedMem] : [0]}
+          name='Memory Usage'
+          labels={['Memory Used', 'Memory Available']}
+        />
+      </div>
+      <div style={{ gridTemplateAreas: 'bar', width: '35vw' }}>
+        <PieChart
+          pieData={hitRate ? [hitRate, 100 - hitRate] : [0]}
+          name='Hit Rate'
+          labels={['Hits', 'Misses']}
+        />
+      </div>
     </div>
   );
 }

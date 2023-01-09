@@ -23,7 +23,7 @@ export default function LineGraph({ lineData }: lineProps): JSX.Element {
       {
         label: 'hello',
         data: lineData, //[array of data which are nums]
-        borderColor: 'white',
+        borderColor: 'black',
         borderWidth: 1,
         // xAxisID: 'time',
         // yAxisID: 'y'
@@ -31,14 +31,16 @@ export default function LineGraph({ lineData }: lineProps): JSX.Element {
     ],
   };
   return (
-    <div style={{ width: '800px' }}>
-      LineGraph
+    <div
+    // style={{ width: '800px' }}
+    >
+      <h2>Memory Usage</h2>
       <Line
         data={data}
         // add chart data labels, datasets, options and properties
         options={{
           plugins: {
-            title: { display: true, text: 'hello world' },
+            title: { display: true },
             legend: { display: false },
           },
           scales: {
