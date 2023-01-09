@@ -83,7 +83,7 @@ export default function Sidebar() {
   return (
     <div>
       <section className='formContainer'>
-        <form onSubmit={handleFormSubmit}>
+        <form onSubmit={handleFormSubmit} id='addEndpointForm'>
           <label>
             Host
             <br />
@@ -141,7 +141,7 @@ export default function Sidebar() {
           <br />
           <br />
           <button className='addEndpoint' type='submit' role='button'>
-            <GrAddCircle size={30} />
+            <GrAddCircle size={30} color={'313614'}/>
           </button>
         </form>
         <div>
@@ -159,7 +159,7 @@ export default function Sidebar() {
                     className='delete'
                     type='submit'
                   >
-                    <BsTrash size={20} />
+                    <BsTrash size={20} color={'313614'} />
                   </button>
                   <button
                     onClick={() => {

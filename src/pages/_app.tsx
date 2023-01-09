@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import '../styles/sidebar.css'
 import '../styles/navbar.css'
-import '../styles/modal.css'
+import '../styles/modal.scss'
 
 import type { AppProps } from 'next/app'
 

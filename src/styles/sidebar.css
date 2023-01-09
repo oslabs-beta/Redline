@@ -2,6 +2,7 @@
     margin: 10px; 
     font-family: 'DM Serif Display', serif;
     font-size: 20px;
+    color:  #313614;
     border-style: solid;
     border-width: 1px;
     border-color: #313614;
@@ -35,6 +36,7 @@
   
   .eachEndpoint {
     font-family: 'DM Serif Display', serif;
+    color:  #313614;
     font-size: 20px;
     outline: 0;
     border: none;

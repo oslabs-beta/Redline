@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import { isPropertySignature } from 'typescript';
+import Alert from './Alert';
 
 interface barProps {
   barData: number[] | number[][];
@@ -53,6 +54,7 @@ export default function BarChart(props: barProps) {
     <div>
       <h2>{props.name}</h2>
       <Bar options={options} data={data} />
+      <Alert data={props.barData} />
     </div>
   );
 }
