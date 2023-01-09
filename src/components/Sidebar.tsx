@@ -24,6 +24,19 @@ export default function Sidebar() {
   function handleFormSubmit(event: any) {
     event.preventDefault();
 
+    // checks to see if an endpoint with this nickname already exists. 
+    let repeat: boolean = false;
+
+    for (const object of endpoints) {
+      if (object['nickname'] === nickname) repeat = true;
+    }
+
+    if (repeat)
+      return alert(
+        'Warning: endpoint with this nickname already exists, please rename the endpoint and try again.'
+      );
+
+    // if it doesn't exist, run the code below to add the new endpoint
     const newEndpoint: Endpoint = {
       host: host,
       port: port,
@@ -53,13 +66,13 @@ export default function Sidebar() {
   function storeCurrentEndpoint(endpoint: string) {
     // fire the setter function prop drilled from Main.tsx to set the Main.tsx state for the CurrentEndpoint and set to the clicked endpoint
     endpoints.forEach((object) => {
-      if (Object.keys(object).find((key) => object['nickname'] === endpoint)) {
-        // we do this when an endpoint is clicked
+      if (object['nickname'] === endpoint) {
         localStorage.setItem('currentEndpoint', JSON.stringify(object));
       }
     });
   }
 
+  // delete an endpoint when user clicks delete 
   function deleteEndpoint(endpoint: string) {
     localStorage.removeItem(endpoint);
     if (
@@ -141,40 +154,36 @@ export default function Sidebar() {
           <br />
           <br />
           <button className='addEndpoint' type='submit' role='button'>
-            <GrAddCircle size={30} color={'313614'}/>
+            <GrAddCircle size={30} color={'313614'} />
           </button>
         </form>
         <div>
           <br />
-          {
-            // when the button above is clicked, it adds an endpoint below the form. the endpoint is a clickable button. When clicked, the endpoint is stored in localStorage under 'currentEndpoint' so it can spin up metrics wherever thats happening.
-            // ****still need to add the logic to delete an endpoint and spin up metrics when endpoint is clicked****
-            endpoints.map((object, index) => {
-              return (
-                <div className='endpointContainer' key={index}>
-                  <button
-                    onClick={() => {
-                      deleteEndpoint(object.nickname);
-                    }}
-                    className='delete'
-                    type='submit'
-                  >
-                    <BsTrash size={20} color={'313614'} />
-                  </button>
-                  <button
-                    onClick={() => {
-                      storeCurrentEndpoint(object.nickname);
-                    }}
-                    className='eachEndpoint'
-                    type='submit'
-                  >
-                    {object.nickname}
-                  </button>
-                  <br />
-                </div>
-              );
-            })
-          }
+          {endpoints.map((object, index) => {
+            return (
+              <div className='endpointContainer' key={index}>
+                <button
+                  onClick={() => {
+                    deleteEndpoint(object.nickname);
+                  }}
+                  className='delete'
+                  type='submit'
+                >
+                  <BsTrash size={20} color={'313614'} />
+                </button>
+                <button
+                  onClick={() => {
+                    storeCurrentEndpoint(object.nickname);
+                  }}
+                  className='eachEndpoint'
+                  type='submit'
+                >
+                  {object.nickname}
+                </button>
+                <br />
+              </div>
+            );
+          })}
         </div>
       </section>
     </div>
