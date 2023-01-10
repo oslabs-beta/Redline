@@ -32,7 +32,7 @@ export default function MetricContainer(props: containerProps): JSX.Element {
       }}
     >
       <div style={{ gridTemplateAreas: 'line', width: '30vw' }}>
-        <LineGraph lineData={metrics.map((metric) => metric.used_memory)} />
+        <LineGraph lineData={metrics.map((metric) => metric.used_memory)} title={'Memory Usage Over Time'} axesLabels={['Elapsed time (seconds)', 'Bytes']}/>
       </div>
       <div style={{ gridTemplateAreas: 'bar', width: '30vw' }}>
         <BarChart

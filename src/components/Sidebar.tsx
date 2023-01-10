@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { BsTrash } from 'react-icons/bs';
 import { GrAddCircle } from 'react-icons/gr';
+import { Endpoint } from '../../types/types';
 
 // declare the type of the props (setter function)
 
 // prop drill the setter function from Main.tsx to props
-export default function Sidebar() {
-  interface Endpoint {
-    host: string;
-    port: string;
-    password: string;
-    nickname: string;
-  }
 
+interface SidebarProps {
+  setEndpoint: React.Dispatch<React.SetStateAction<Endpoint | undefined>>;
+}
+export default function Sidebar({ setEndpoint }: SidebarProps) {
   // store the most recently added host, port, password and nickname in state as well as all the endpoints
   const [host, setHost] = useState('');
-  const [port, setPort] = useState('');
+  const [port, setPort] = useState(6379);
   const [password, setPassword] = useState('');
   const [nickname, setNickname] = useState('');
   const [endpoints, setEndpoints] = useState<Endpoint[]>([]);
@@ -24,7 +22,7 @@ export default function Sidebar() {
   function handleFormSubmit(event: any) {
     event.preventDefault();
 
-    // checks to see if an endpoint with this nickname already exists. 
+    // checks to see if an endpoint with this nickname already exists.
     let repeat: boolean = false;
 
     for (const object of endpoints) {
@@ -67,12 +65,14 @@ export default function Sidebar() {
     // fire the setter function prop drilled from Main.tsx to set the Main.tsx state for the CurrentEndpoint and set to the clicked endpoint
     endpoints.forEach((object) => {
       if (object['nickname'] === endpoint) {
+        setEndpoint(object);
+        console.log(object);
         localStorage.setItem('currentEndpoint', JSON.stringify(object));
       }
     });
   }
 
-  // delete an endpoint when user clicks delete 
+  // delete an endpoint when user clicks delete
   function deleteEndpoint(endpoint: string) {
     localStorage.removeItem(endpoint);
     if (
@@ -119,7 +119,7 @@ export default function Sidebar() {
               name='port'
               value={port}
               onChange={(event) => {
-                setPort(event.target.value);
+                setPort(+event.target.value);
               }}
             />
           </label>

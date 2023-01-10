@@ -11,11 +11,9 @@ interface pieProps {
   labels: string[];
 }
 
-export default function PieGraph({
-  pieData,
-  name,
-  labels,
-}: pieProps): JSX.Element {
+export default function PieGraph({pieData, name, labels }: pieProps): JSX.Element {
+  const metric:string = name
+  const unit:string = 'percent'
   // loop through the data we recieve - we should get back an array of objects
   return (
     <div>
@@ -49,7 +47,7 @@ export default function PieGraph({
           },
         }}
       />
-      <Alert data={pieData} />
+      <Alert data={pieData} metric={metric} unit={unit}/>
     </div>
   );
 }

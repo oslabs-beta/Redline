@@ -98,11 +98,9 @@ export default function Main() {
     <div>
       {/* <button onClick={ () => setEndpoint({'host': '127.0.0.1', 'port': 6379, 'password': '', 'nickname': 'nickname'}) }>CONNECT TO local</button>
       <button onClick={ () => setEndpoint({'host': 'redis-12203.c289.us-west-1-2.ec2.cloud.redislabs.com', 'port': 12203, 'password': 'GzxNr6qE7kXSHH2boTMycxZQXo9wicSE', 'nickname': 'NA-free-db'}) }>CONNECT TO NA-free-db</button> */}
-      <Sidebar />
-      <MetricContainer metrics={metrics} />
       <NavBar />
       <div style={{ display: 'flex' }}>
-        <Sidebar />
+        <Sidebar setEndpoint={setEndpoint}/>
         <MetricContainer metrics={metrics} />
       </div>
     </div>
