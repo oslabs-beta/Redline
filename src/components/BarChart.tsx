@@ -5,14 +5,14 @@ import { isPropertySignature } from 'typescript';
 import Alert from './Alert';
 
 interface barProps {
-  barData: number[] | number[][];
+  barData: number[][];
   name: string;
   labels: string[];
 }
 
 export default function BarChart({ barData, name, labels }: barProps) {
-  const metric:string = 'Memory Usage'
-  const unit:string = 'bytes'
+  const metric: string = 'Memory Usage';
+  const unit: string = 'bytes';
 
   const options = {
     responsive: true,
@@ -57,7 +57,7 @@ export default function BarChart({ barData, name, labels }: barProps) {
     <div>
       <h2>{name}</h2>
       <Bar options={options} data={data} />
-      <Alert data={barData} metric={metric} unit={unit}/>
+      <Alert data={barData} metric={metric} unit={unit} />
     </div>
   );
 }
