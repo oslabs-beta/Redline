@@ -7,10 +7,12 @@ Chart.register(...registerables);
 
 interface lineProps {
   lineData: number[];
+  title: string,
+  axesLabels: string[],
 }
 
-export default function LineGraph({ lineData }: lineProps): JSX.Element {
-  console.log(lineData);
+export default function LineGraph({ lineData, title, axesLabels }: lineProps): JSX.Element {
+  // console.log(lineData);
   const labels: number[] = [];
   lineData.forEach((el, ind) => {
     labels.push(ind); //[1,2,3,4,5,6]
@@ -45,7 +47,7 @@ export default function LineGraph({ lineData }: lineProps): JSX.Element {
               title: { display: true, text: 'Elapsed time (seconds)' },
             },
             y: {
-              title: { display: true, text: 'Memory (in bytes)' },
+              title: { display: true, text: axesLabels[1] },
               beginAtZero: true,
             },
           },
