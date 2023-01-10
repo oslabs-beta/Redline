@@ -1,15 +1,18 @@
-/* .navBarContainer {
-    background-color: #dee2e6; 
-    height: 50px; 
-    overflow: hidden;
-    top: 0; 
-    width: 100%; 
-  }
-  
-  .navBarWrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-  } */
+.navBarContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #dee2e6;
+  height: 50px;
+  overflow: hidden;
+  top: 0;
+  width: 100%;
+}
+
+.navBarWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}

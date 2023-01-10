@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart, ArcElement } from 'chart.js';
+import Alert from './Alert';
+
 Chart.register(ArcElement);
 
 interface pieProps {
@@ -9,19 +11,23 @@ interface pieProps {
   labels: string[];
 }
 
-export default function PieGraph(props: pieProps): JSX.Element {
+export default function PieGraph({
+  pieData,
+  name,
+  labels,
+}: pieProps): JSX.Element {
   // loop through the data we recieve - we should get back an array of objects
   return (
     <div>
-      <h2>{props.name}</h2>
+      <h2>{name}</h2>
       <Pie
         className='pie'
         datasetIdKey='byType'
         data={{
-          labels: props.labels, //['memory used', 'memory remaining'],
+          labels: labels, //['memory used', 'memory remaining'],
           datasets: [
             {
-              data: props.pieData,
+              data: pieData,
               backgroundColor: [
                 '#3e95cd',
                 '#8e5ea2',
@@ -43,6 +49,7 @@ export default function PieGraph(props: pieProps): JSX.Element {
           },
         }}
       />
+      <Alert data={pieData} />
     </div>
   );
 }

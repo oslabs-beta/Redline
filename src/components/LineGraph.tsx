@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { CategoryScale, Chart, registerables } from 'chart.js';
 import { setLabels } from 'react-chartjs-2/dist/utils';
 import { Line } from 'react-chartjs-2';
+import Alert from './Alert';
 
 Chart.register(...registerables);
 
@@ -24,7 +25,7 @@ export default function LineGraph({ lineData, title, axesLabels }: lineProps): J
       {
         label: 'hello',
         data: lineData, //[array of data which are nums]
-        borderColor: 'white',
+        borderColor: 'black',
         borderWidth: 1,
         // xAxisID: 'time',
         // yAxisID: 'y'
@@ -32,14 +33,16 @@ export default function LineGraph({ lineData, title, axesLabels }: lineProps): J
     ],
   };
   return (
-    <div style={{ width: '800px' }}>
-      LineGraph
+    <div
+    // style={{ width: '800px' }}
+    >
+      <h2>Memory Usage</h2>
       <Line
         data={data}
         // add chart data labels, datasets, options and properties
         options={{
           plugins: {
-            title: { display: true, text: 'hello world' },
+            title: { display: true },
             legend: { display: false },
           },
           scales: {
@@ -53,6 +56,7 @@ export default function LineGraph({ lineData, title, axesLabels }: lineProps): J
           },
         }}
       />
+      <Alert data={lineData} />
     </div>
   );
 }

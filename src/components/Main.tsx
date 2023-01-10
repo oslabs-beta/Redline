@@ -101,6 +101,10 @@ export default function Main() {
       <Sidebar />
       <MetricContainer metrics={metrics} />
       <NavBar />
+      <div style={{ display: 'flex' }}>
+        <Sidebar />
+        <MetricContainer metrics={metrics} />
+      </div>
     </div>
   );
 }
