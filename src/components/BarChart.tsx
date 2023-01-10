@@ -28,7 +28,7 @@ export default function BarChart({ barData, name, labels }: barProps) {
   };
   const x_axis = ['-8.00', '-6.00', '-4.00', '-2.00'];
   const data = {
-    labels,
+    labels: x_axis,
     datasets: [
       {
         label: labels[0],
