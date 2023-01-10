@@ -11,6 +11,9 @@ interface barProps {
 }
 
 export default function BarChart({ barData, name, labels }: barProps) {
+  const metric:string = 'Memory Usage'
+  const unit:string = 'bytes'
+
   const options = {
     responsive: true,
     scales: {
@@ -54,7 +57,7 @@ export default function BarChart({ barData, name, labels }: barProps) {
     <div>
       <h2>{name}</h2>
       <Bar options={options} data={data} />
-      <Alert data={barData} />
+      <Alert data={barData} metric={metric} unit={unit}/>
     </div>
   );
 }

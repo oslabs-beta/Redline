@@ -13,16 +13,19 @@ interface lineProps {
 export default function LineGraph({ lineData }: lineProps): JSX.Element {
   console.log(lineData);
   const labels: number[] = [];
+  // hard codes to be replaced with dynamic logic/info from user
+  const metric:string = 'Memory Usage'
+  const unit:string = 'bytes'
+
   lineData.forEach((el, ind) => {
-    labels.push(ind); //[1,2,3,4,5,6]
-    // console.log(labels);
+    labels.push(ind); // [1,2,3,4,5,6]
   });
   const data = {
     labels: labels,
     datasets: [
       {
         label: 'hello',
-        data: lineData, //[array of data which are nums]
+        data: lineData, // [array of data which are nums]
         borderColor: 'black',
         borderWidth: 1,
         // xAxisID: 'time',
@@ -31,9 +34,7 @@ export default function LineGraph({ lineData }: lineProps): JSX.Element {
     ],
   };
   return (
-    <div
-    // style={{ width: '800px' }}
-    >
+    <div>
       <h2>Memory Usage</h2>
       <Line
         data={data}
@@ -54,7 +55,7 @@ export default function LineGraph({ lineData }: lineProps): JSX.Element {
           },
         }}
       />
-      <Alert data={lineData} />
+      <Alert data={lineData} metric={metric} unit={unit}/>
     </div>
   );
 }

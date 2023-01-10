@@ -4,10 +4,12 @@ import { BsFillBellFill } from 'react-icons/bs'
 
 type Props = {
   data: number[] | number[][];
+  metric: string;
+  unit: string;
 };
 
 // pass in datapoints from chart/graph component to props
-export default function Alert({ data }: Props) {
+export default function Alert({ data, metric, unit }: Props) {
   // declare opened/close state, initialized to false to hide modal on default
   const [isOpened, setIsOpened] = useState(false);
 
@@ -17,12 +19,11 @@ export default function Alert({ data }: Props) {
     console.log('alert started');
     // use setTimeout to render a new alert for a specific metric every 2 minutes
     setTimeout(
-      () => alert(`Current memory usage is ${data[data.length - 1]} bytes`),
+      () => alert(`Current ${metric.toLowerCase()} is ${data[data.length - 1]} ${unit}`),
       10000
     );
 
-    // check if the last element in the data array is greater than the threshold
-    // if so, send alert
+    // check if the last element in the data array is greater than the threshold. if so, send alert
   };
 
   // return a div that contains the hidden modal and button to show the modal
@@ -39,7 +40,7 @@ export default function Alert({ data }: Props) {
         <BsFillBellFill size={20} />
       </button>
       <AlertModal
-        title="Create an Alert"
+        title= {`Create an Alert for ${metric}`}
         isOpened={isOpened}
         onConfirm={onConfirm}
         onClose={() => setIsOpened(false)}
@@ -49,3 +50,13 @@ export default function Alert({ data }: Props) {
     </div>
   );
 }
+
+/*
+
+comments to be removed before finalizing dev app
+[X] window alerts that spin up every 15 seconds
+[] window alerts that display correct titles and measurements for each visualizers/graphs we selected for MVP
+[] converting window alerts to email notifications
+[] alerts that accepts parameters/thresholds and alert users via email notification 
+[] push notifications 
+*/
