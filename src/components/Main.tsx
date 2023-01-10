@@ -1,42 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import Sidebar from './Sidebar';
 import MetricContainer from './MetricContainer';
-import { MetricCollection } from '../../types/types';
-import NavBar from './NavBar';
+import { MetricCollection, Endpoint } from '../../types/types';
+import NavBar from './NavBar'; 
+import { connect } from 'http2';
+import ResponseCache from 'next/dist/server/response-cache';
 
 export default function Main() {
-  /* Declare state that we pass down to sidebar. Sidebar is where the user is entering the endpoints and where the declared state will be updated.
+  // Declare state that we pass down to sidebar. Sidebar is where the user is entering the endpoints and where the declared state will be updated.
+  const [endpoint, setEndpoint] = useState<Endpoint>();
+  const [metrics, setMetrics] = useState<MetricCollection[]>([]); //store array of metric object instances (that updates every X sec)
+  const [delay, setDelay] = useState(2000); // default interval is 2000ms
 
-  */
-  const [endpoint, setEndpoint] = useState();
-  const [metrics, setMetrics] = useState<MetricCollection[]>([]); //store array of metric object instances (that updates every 2s)
-  // const [pieData, setPieData] = useState('');
-  // const [lineData, setLineData] = useState();
-  // const [barData, setBarData] = useState();
-
-  // Grab the redis metrics
-  useEffect(() => {
-    setTimeout(async () => {
-      try {
-        const response = await axios.get(
-          'http://localhost:3000/api/retrieveMetrics'
-        );
-        // console.log(response.data);
-        if (metrics.length == 4) {
-          // <-- add variable set by user potentially
-          setMetrics(() => [...metrics.slice(-3), response.data]); //[{metrics1}, {metrics2}, {metrics3}]
-        } else {
-          setMetrics(() => [...metrics, response.data]);
-        }
-        // console.log(metrics);
-        // setMetrics(response.data.allData);
-        // setPieData(response.data.allData.used_memory_dataset_perc); //setPieData(resp.data);
-      } catch (err) {
-        console.log(err);
-      }
-    }, 2_000);
-  }, [metrics]);
+  const savedCallback = useRef(retrieveData); // use retrieveData fn thru useRef so it has access to updated metrics
+  savedCallback.current = retrieveData;  
 
   // function intervalAction() {
   //   const getData = async () => {
@@ -55,9 +33,73 @@ export default function Main() {
   //     intervalAction();
   //   }, 2_000);
   // }
+  // useInterval(retrieveData, delay)
+
+  useEffect(() => { // setup data fetching interval
+    if(endpoint) { // if endpoint is not set, then do not set fetch interval
+      let id = setInterval(() => {
+        savedCallback.current();
+      }, delay);
+      return () => clearInterval(id);      
+    }
+  }, [endpoint, delay]); // when endpoint changes, clear previous interval and start new one
+
+  async function retrieveData() {
+    try {
+      const response = await axios.get('/api/retrieveMetrics');
+      // console.log(response.data.used_memory);
+      if(response.data !== '') {
+        if (metrics.length == 5) {
+          // setMetrics((metrics) => [...metrics.slice(-4), response.data]); //[{metrics1}, {metrics2}, {metrics3}]
+          setMetrics([...metrics.slice(-4), response.data]); //[{metrics1}, {metrics2}, {metrics3}]
+        } else {
+          // setMetrics((metrics) => [...metrics, response.data]);
+          setMetrics([...metrics, response.data]);
+        }        
+      }
+      console.log(metrics);
+      // return response.data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  useEffect(() => {
+    connectEndpoint(); // attempt to connect when endpoint is updated    
+    return () => { disconnectEndpoint() } // disconnect from endpoint when endpoint is changed
+    
+    async function connectEndpoint() {
+      if (endpoint) { // only attempt to connect if endpoint is set
+        const response = await axios({
+          url: '/api/connect',
+          method: 'POST',
+          data: endpoint // uses current endpoint as body sent in request
+        })     
+        if(response.status === 200) { // if successful disconnect, reset metrics array for new endpoint
+          console.log('Connected to Redis endpoint:', endpoint.nickname)
+        }
+        // console.log('connect', response); 
+      }
+    }
+    async function disconnectEndpoint() {
+      if (endpoint) { // only attempt to disconnect if endpoint is set
+        const response = await axios.get('/api/disconnect')
+        if(response.status === 200) { // if successful disconnect, reset metrics array for new endpoint
+          setMetrics([]);
+          console.log('Disconnected from:', endpoint.nickname)
+        } else {
+          console.log(response.status);
+        }
+      }
+    }
+  }, [endpoint])
 
   return (
     <div>
+      {/* <button onClick={ () => setEndpoint({'host': '127.0.0.1', 'port': 6379, 'password': '', 'nickname': 'nickname'}) }>CONNECT TO local</button>
+      <button onClick={ () => setEndpoint({'host': 'redis-12203.c289.us-west-1-2.ec2.cloud.redislabs.com', 'port': 12203, 'password': 'GzxNr6qE7kXSHH2boTMycxZQXo9wicSE', 'nickname': 'NA-free-db'}) }>CONNECT TO NA-free-db</button> */}
+      <Sidebar />
+      <MetricContainer metrics={metrics} />
       <NavBar />
       <div style={{ display: 'flex' }}>
         <Sidebar />

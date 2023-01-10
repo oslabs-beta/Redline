@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PieChart from './PieChart';
 import BarChart from './BarChart';
 import LineGraph from './LineGraph';
-import { MetricCollection } from '../../types/types';
+import { MetricCollection, Units } from '../../types/types';
 
 interface containerProps {
   metrics: MetricCollection[];
@@ -14,6 +14,7 @@ export default function MetricContainer(props: containerProps): JSX.Element {
   let usedMem;
   let hitRate;
   if (pieMetric) {
+    // console.log(pieMetric);
     usedMem =
       pieMetric.used_memory /
       (pieMetric.used_memory_dataset - pieMetric.used_memory_startup);

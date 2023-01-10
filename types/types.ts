@@ -9,6 +9,9 @@ export interface MetricCollection {
   used_memory_startup: number;
   keyspace_hits: number;
   keyspace_misses: number;
+  instantaneous_ops_per_sec: number;
+  connected_clients: number;
+  total_connections_received: number;
 }
 
 export interface Metrics {
@@ -25,8 +28,18 @@ export const Units: Units = {
   used_memory_startup: 'bytes',
   keyspace_hits: 'hits',
   keyspace_misses: 'misses',
+  instantaneous_ops_per_sec: 'operations/sec',
+  connected_clients: 'clients',
+  total_connections_received: 'cxns received'
 };
 
 interface Units {
   [x: string]: string;
+}
+
+export interface Endpoint {
+  host: string,
+  port: number,
+  password: string,
+  nickname: string
 }
