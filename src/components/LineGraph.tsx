@@ -3,18 +3,22 @@ import { CategoryScale, Chart, registerables } from 'chart.js';
 import { setLabels } from 'react-chartjs-2/dist/utils';
 import { Line } from 'react-chartjs-2';
 import Alert from './Alert';
+import { Units } from '../../types/types';
 
 Chart.register(...registerables);
 
 interface lineProps {
   lineData: number[];
+  title: string,
+  axesLabels: string[],
 }
 
-export default function LineGraph({ lineData }: lineProps): JSX.Element {
-  console.log(lineData);
+export default function LineGraph({ lineData, title, axesLabels }: lineProps): JSX.Element {
+  // console.log(lineData);
   const labels: number[] = [];
   // hard codes to be replaced with dynamic logic/info from user
-  const metric:string = 'Memory Usage'
+  const metric:string = title
+  // replace the hard coded 'bytes' below with the types from types.ts file based on the x / y axis labels
   const unit:string = 'bytes'
 
   lineData.forEach((el, ind) => {
@@ -46,10 +50,10 @@ export default function LineGraph({ lineData }: lineProps): JSX.Element {
           },
           scales: {
             x: {
-              title: { display: true, text: 'Elapsed time (seconds)' },
+              title: { display: true, text: axesLabels[0] },
             },
             y: {
-              title: { display: true, text: 'Memory (in bytes)' },
+              title: { display: true, text: axesLabels[1] },
               beginAtZero: true,
             },
           },
