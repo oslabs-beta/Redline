@@ -3,17 +3,14 @@ import { BsTrash } from 'react-icons/bs';
 import { GrAddCircle } from 'react-icons/gr';
 import { Endpoint } from '../../types/types';
 
-// declare the type of the props (setter function)
-
-// prop drill the setter function from Main.tsx to props
-
 interface SidebarProps {
-  setEndpoint: React.Dispatch<React.SetStateAction<Endpoint | undefined>>;
+  setMetricEndpoint: React.Dispatch<React.SetStateAction<Endpoint | undefined>>;
 }
-export default function Sidebar({ setEndpoint }: SidebarProps) {
+
+export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
   // store the most recently added host, port, password and nickname in state as well as all the endpoints
   const [host, setHost] = useState('');
-  const [port, setPort] = useState(6379);
+  const [port, setPort] = useState<number>();
   const [password, setPassword] = useState('');
   const [nickname, setNickname] = useState('');
   const [endpoints, setEndpoints] = useState<Endpoint[]>([]);
@@ -29,7 +26,7 @@ export default function Sidebar({ setEndpoint }: SidebarProps) {
       if (object['nickname'] === nickname) repeat = true;
     }
 
-    if (repeat)
+    if (repeat) 
       return alert(
         'Warning: endpoint with this nickname already exists, please rename the endpoint and try again.'
       );
@@ -37,16 +34,15 @@ export default function Sidebar({ setEndpoint }: SidebarProps) {
     // if it doesn't exist, run the code below to add the new endpoint
     const newEndpoint: Endpoint = {
       host: host,
-      port: port,
+      port: port ?? 6739,
       password: password,
       nickname: nickname,
     };
 
     const previousEndpoints = endpoints;
-    previousEndpoints.push(newEndpoint);
-    setEndpoints(previousEndpoints);
+    setEndpoints([...previousEndpoints, newEndpoint]);
 
-    localStorage.setItem('allEndpoints', JSON.stringify(endpoints));
+    localStorage.setItem('allEndpoints', JSON.stringify([...previousEndpoints, newEndpoint]));
     localStorage.setItem(nickname, JSON.stringify(newEndpoint));
   }
 
@@ -65,9 +61,8 @@ export default function Sidebar({ setEndpoint }: SidebarProps) {
     // fire the setter function prop drilled from Main.tsx to set the Main.tsx state for the CurrentEndpoint and set to the clicked endpoint
     endpoints.forEach((object) => {
       if (object['nickname'] === endpoint) {
-        setEndpoint(object);
-        console.log(object);
         localStorage.setItem('currentEndpoint', JSON.stringify(object));
+        setMetricEndpoint(object);
       }
     });
   }
@@ -103,7 +98,6 @@ export default function Sidebar({ setEndpoint }: SidebarProps) {
             <input
               type='text'
               name='host'
-              value={host}
               onChange={(event) => {
                 setHost(event.target.value);
               }}
@@ -117,7 +111,6 @@ export default function Sidebar({ setEndpoint }: SidebarProps) {
             <input
               type='text'
               name='port'
-              value={port}
               onChange={(event) => {
                 setPort(+event.target.value);
               }}
@@ -131,7 +124,6 @@ export default function Sidebar({ setEndpoint }: SidebarProps) {
             <input
               type='password'
               name='password'
-              value={password}
               onChange={(event) => {
                 setPassword(event.target.value);
               }}
@@ -145,7 +137,6 @@ export default function Sidebar({ setEndpoint }: SidebarProps) {
             <input
               type='text'
               name='nickname'
-              value={nickname}
               onChange={(event) => {
                 setNickname(event.target.value);
               }}
