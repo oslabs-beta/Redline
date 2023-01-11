@@ -11,7 +11,7 @@ export default function MetricBox({ name, boxData }: boxProps) {
   const unit: string = 'clients';
 
   return (
-    <div className='graphContainer'>
+    <div className='graphWrapper'>
       <h2>{name}</h2>
           <h1>
             {boxData ? `${boxData} ${unit}` : ''}

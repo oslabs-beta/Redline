@@ -39,7 +39,7 @@ export default function LineGraph({ lineData, title, axesLabels }: lineProps): J
     ],
   };
   return (
-    <div className='graphContainer'>
+    <div className='graphWrapper'>
       <h2>{title}</h2>
       <Line
         data={data}

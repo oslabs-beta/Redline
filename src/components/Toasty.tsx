@@ -15,6 +15,7 @@ export default function Push({ data, metric, unit }: Props) {
   const [isActivated, setIsActivated] = useState(false);
   const [dropDownValue, setDropDownValue] = useState('');
   const [number, setNumber] = useState<number | undefined>();
+  const [bellColor, setBellColor] = useState('313614')
 
   const showToastMessage = () => {
     toast.info(
@@ -47,6 +48,7 @@ export default function Push({ data, metric, unit }: Props) {
 
   const onConfirm = () => {
     setIsActivated(true);
+    setBellColor('CB3016'); 
   };
 
   return (
@@ -60,7 +62,7 @@ export default function Push({ data, metric, unit }: Props) {
             setIsOpened(true);
           }}
         >
-          <BsFillBellFill size={20} />
+          <BsFillBellFill size={20} color={bellColor} />
         </button>
         <AlertModal
           title={`Create an Alert for ${metric}`}

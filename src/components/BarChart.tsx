@@ -55,7 +55,7 @@ export default function BarChart({ barData, name, labels }: barProps) {
   };
 
   return (
-    <div className='graphContainer'>
+    <div className='graphWrapper'>
       <h2>{name}</h2>
       <Bar options={options} data={data} />
       <Toasty data={barData} metric={metric} unit={unit}/>

@@ -30,15 +30,15 @@ export default function MetricContainer(props: containerProps): JSX.Element {
     hitRate = keyspace_hits / (keyspace_hits + keyspace_misses);
   }
   return (
-    <div className='chartContainer'>
-      <div>
+    <div className='metricContainer'>
+      <div className='graphContainer'>
         <LineGraph
           lineData={metrics.map((metric) => metric.used_memory)}
           title={'Memory Usage Over Time'}
           axesLabels={['Elapsed time (seconds)', 'Bytes']}
         />
       </div>
-      <div>
+      <div  className='graphContainer'>
         {/* <BarChart
           barData={metrics.map((metric) => [
             metric.used_memory,
@@ -53,7 +53,7 @@ export default function MetricContainer(props: containerProps): JSX.Element {
           axesLabels={['Elapsed time (seconds)', 'Bytes']}
         />
       </div>
-      <div>
+      <div  className='graphContainer'>
         <MetricBox boxData={connected_clients} name='Connected Clients' />
         {/* <PieChart
           pieData={usedMem ? [usedMem, 100 - usedMem] : [0]}
@@ -61,7 +61,7 @@ export default function MetricContainer(props: containerProps): JSX.Element {
           labels={['Memory Used', 'Memory Available']}
         /> */}
       </div>
-      <div>
+      <div className='graphContainer'>
         <PieChart
           pieData={keyspace_hits ? [keyspace_hits, keyspace_misses] : [0]}
           name='Hit Rate'
