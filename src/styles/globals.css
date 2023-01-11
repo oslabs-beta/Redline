@@ -1,3 +1,13 @@
+/* 
+declare global black colors and black1, black2, black3
+declare global red colors
+ */
+
 body {
   margin: 0; 
+}
+
+.mainContainer {
+  display: flex; 
+  justify-content: center; 
 }

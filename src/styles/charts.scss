@@ -1,11 +1,26 @@
+.metricContainer {
+    display: grid; 
+    grid-template-columns: repeat(2, 550px); 
+    margin: 15px;
+//   display: flex; 
+//   flex-wrap: wrap; 
+//   flex-direction: row;
+}
+
 .graphContainer {
-  border: solid;
-  border-color: #313614;
+  margin: 15px;
+}
+
+.graphWrapper {
+  border: solid 1px #313614;
+  border-radius: 10px;
   padding: 15px;
   margin-top: 60px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 
   h2 {
     font-family: 'DM Serif Display', serif;
+    font-size: 25px;
     text-align: center;
     color: #313614;
   }
@@ -15,29 +30,20 @@
   }
 }
 
-.chartContainer {
-  display: flex; 
-  flex-wrap: wrap; 
-  // gridTemplateAreas: `'line bar' 'pie pie'`,
-  // gridTemplateColumns: '1fr 1fr',
-  margin-left: 5vw;
-  margin: 15px;
-}
-
-.metricBoxContainer {
-  border: solid;
-  margin: 15px;
-  display: flex;
-  height: 19.5vw;
-  width: 29vw;
-  background-color: #dee2e6;
-  border: 3px solid black;
-  padding: 3vw;
-  font-size: 2vw;
-  place-self: center;
-  margin: auto;
-  h1 {
-    margin: auto;
-    align-self: center;
-  }
-}
+// .metricBoxContainer {
+//   border: solid;
+//   margin: 15px;
+//   display: flex;
+//   height: 19.5vw;
+//   width: 29vw;
+//   background-color: #dee2e6;
+//   border: 3px solid black;
+//   padding: 3vw;
+//   font-size: 2vw;
+//   place-self: center;
+//   margin: auto;
+//   h1 {
+//     margin: auto;
+//     align-self: center;
+//   }
+// }
