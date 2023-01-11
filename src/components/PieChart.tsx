@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart, ArcElement } from 'chart.js';
-import Toasty from './Toasty'; 
+import Alerts from './Alerts'; 
 
 Chart.register(ArcElement);
 
@@ -47,7 +47,7 @@ export default function PieGraph({pieData, name, labels }: pieProps): JSX.Elemen
           },
         }}
       />
-      <Toasty data={pieData} metric={metric} unit={unit}/>
+      <Alerts data={pieData} metric={metric} unit={unit}/>
     </div>
   );
 }

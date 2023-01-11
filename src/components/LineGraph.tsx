@@ -3,7 +3,7 @@ import { CategoryScale, Chart, registerables } from 'chart.js';
 import { setLabels } from 'react-chartjs-2/dist/utils';
 import { Line } from 'react-chartjs-2';
 import { Units } from '../../types/types';
-import Toasty from './Toasty'; 
+import Alerts from './Alerts'; 
 
 
 Chart.register(...registerables);
@@ -60,7 +60,7 @@ export default function LineGraph({ lineData, title, axesLabels }: lineProps): J
           },
         }}
       />
-      <Toasty data={lineData} metric={metric} unit={unit}/>
+      <Alerts data={lineData} metric={metric} unit={unit}/>
     </div>
   );
 }
