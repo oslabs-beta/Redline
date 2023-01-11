@@ -12,8 +12,8 @@ interface barProps {
 }
 
 export default function BarChart({ barData, name, labels }: barProps) {
-  const metric:string = 'Memory Usage'
-  const unit:string = 'bytes'
+  const metric: string = 'Memory Usage';
+  const unit: string = 'bytes';
 
   const options = {
     responsive: true,
