@@ -4,6 +4,7 @@ import BarChart from './BarChart';
 import LineGraph from './LineGraph';
 import MetricBox from './MetricBox';
 import { MetricCollection, Units } from '../../types/types';
+import { SymbolDisplayPartKind } from 'typescript';
 
 interface containerProps {
   metrics: MetricCollection[];
@@ -29,32 +30,30 @@ export default function MetricContainer(props: containerProps): JSX.Element {
     hitRate = keyspace_hits / (keyspace_hits + keyspace_misses);
   }
   return (
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateAreas: `'line bar' 'pie pie'`,
-        gridTemplateColumns: '1fr 1fr',
-        marginLeft: '5vw',
-      }}
-    >
-      <div style={{ gridTemplateAreas: 'line', width: '30vw' }}>
+    <div className='chartContainer'>
+      <div>
         <LineGraph
           lineData={metrics.map((metric) => metric.used_memory)}
           title={'Memory Usage Over Time'}
           axesLabels={['Elapsed time (seconds)', 'Bytes']}
         />
       </div>
-      <div style={{ gridTemplateAreas: 'bar', width: '30vw' }}>
-        <BarChart
+      <div>
+        {/* <BarChart
           barData={metrics.map((metric) => [
             metric.used_memory,
             metric.used_memory_rss - metric.used_memory,
           ])}
           name='Memory Usage'
           labels={['Memory Used', 'Memory Available']}
+        /> */}
+          <LineGraph
+          lineData={metrics.map((metric) => metric.instantaneous_ops_per_sec)}
+          title={'Operations Per Second'}
+          axesLabels={['Elapsed time (seconds)', 'Bytes']}
         />
       </div>
-      <div style={{ gridTemplateAreas: 'pie', width: '20vw' }}>
+      <div>
         <MetricBox boxData={connected_clients} name='Connected Clients' />
         {/* <PieChart
           pieData={usedMem ? [usedMem, 100 - usedMem] : [0]}
@@ -62,9 +61,9 @@ export default function MetricContainer(props: containerProps): JSX.Element {
           labels={['Memory Used', 'Memory Available']}
         /> */}
       </div>
-      <div style={{ gridTemplateAreas: 'pie', width: '20vw' }}>
+      <div>
         <PieChart
-          pieData={hitRate ? [hitRate, 100 - hitRate] : [0]}
+          pieData={keyspace_hits ? [keyspace_hits, keyspace_misses] : [0]}
           name='Hit Rate'
           labels={['Hits', 'Misses']}
         />

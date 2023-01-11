@@ -1,0 +1,43 @@
+.graphContainer {
+  border: solid;
+  border-color: #313614;
+  padding: 15px;
+  margin-top: 60px;
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    text-align: center;
+    color: #313614;
+  }
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    text-align: center;
+  }
+}
+
+.chartContainer {
+  display: flex; 
+  flex-wrap: wrap; 
+  // gridTemplateAreas: `'line bar' 'pie pie'`,
+  // gridTemplateColumns: '1fr 1fr',
+  margin-left: 5vw;
+  margin: 15px;
+}
+
+.metricBoxContainer {
+  border: solid;
+  margin: 15px;
+  display: flex;
+  height: 19.5vw;
+  width: 29vw;
+  background-color: #dee2e6;
+  border: 3px solid black;
+  padding: 3vw;
+  font-size: 2vw;
+  place-self: center;
+  margin: auto;
+  h1 {
+    margin: auto;
+    align-self: center;
+  }
+}

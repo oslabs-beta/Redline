@@ -39,8 +39,8 @@ export default function LineGraph({ lineData, title, axesLabels }: lineProps): J
     ],
   };
   return (
-    <div>
-      <h2>Memory Usage</h2>
+    <div className='graphContainer'>
+      <h2>{title}</h2>
       <Line
         data={data}
         // add chart data labels, datasets, options and properties
