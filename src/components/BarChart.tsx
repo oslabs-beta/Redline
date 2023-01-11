@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import { isPropertySignature } from 'typescript';
-import Alert from './Alert';
+import Toasty from './Toasty'; 
+
 
 interface barProps {
-  barData: number[] | number[][];
+  barData: number[][];
   name: string;
   labels: string[];
 }
@@ -57,7 +58,7 @@ export default function BarChart({ barData, name, labels }: barProps) {
     <div>
       <h2>{name}</h2>
       <Bar options={options} data={data} />
-      <Alert data={barData} metric={metric} unit={unit}/>
+      <Toasty data={barData} metric={metric} unit={unit}/>
     </div>
   );
 }

@@ -5,12 +5,19 @@
   right: 0;
   z-index: 19;
   position: fixed;
-  background-color: rgba(1, 5, 2, 0.654);
+  background-color: rgba(1, 5, 2, 0.76);
+
+  .dropdown {
+    font-family: 'Montserrat', sans-serif;
+    color: #313614;
+    font-size: 14px;
+    border-radius: 5px;
+  }
 
   .modal {
     border-radius: 10px; 
     width: 500px;
-    height: 180px;
+    height: 220px;
     text-align: center; 
     background-color: white;
     z-index: 20;
