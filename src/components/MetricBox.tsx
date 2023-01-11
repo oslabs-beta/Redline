@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Alert from './Alert';
+import Toasty from './Toasty'; 
 
 interface boxProps {
   boxData: number;
@@ -28,7 +28,7 @@ export default function MetricBox({ name, boxData }: boxProps) {
           </h1>
         </div>
       </div>
-      <Alert data={[boxData]} metric={metric} unit={unit} />
+      <Toasty data={[boxData]} metric={metric} unit={unit}/>t
     </div>
   );
 }
