@@ -16,7 +16,7 @@ export default function PieGraph({pieData, name, labels }: pieProps): JSX.Elemen
   const unit:string = 'percent'
   // loop through the data we recieve - we should get back an array of objects
   return (
-    <div>
+    <div className='graphContainer'>
       <h2>{name}</h2>
       <Pie
         className='pie'
