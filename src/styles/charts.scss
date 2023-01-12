@@ -1,0 +1,31 @@
+.metricContainer {
+    display: grid; 
+    grid-template-columns: repeat(2, 550px); 
+    margin: 15px;
+//   display: flex; 
+//   flex-wrap: wrap; 
+//   flex-direction: row;
+}
+
+.graphContainer {
+  margin: 15px;
+}
+
+.graphWrapper {
+  border: solid 1px #313614;
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 60px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 25px;
+    text-align: center;
+    color: #313614;
+  }
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    text-align: center;
+  }
+}
