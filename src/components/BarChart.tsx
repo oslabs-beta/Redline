@@ -5,7 +5,7 @@ import { isPropertySignature } from 'typescript';
 import Alert from './Alert';
 
 interface barProps {
-  barData: number[] | number[][];
+  barData: number[][];
   name: string;
   labels: string[];
 }

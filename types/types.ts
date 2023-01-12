@@ -43,3 +43,8 @@ export interface Endpoint {
   password: string,
   nickname: string
 }
+
+export interface ServerError {
+  log?: string,
+  message?: { err: string }
+}
