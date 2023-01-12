@@ -6,16 +6,13 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  try {
     // Logic for specific charts
     if (req.method == 'GET') {
-      // adjust below
-      const newMetric = await getMetrics();
-      // adjust return
-      // console.log('in api call', newMetric);
-      res.status(200).json(newMetric);
+      try {
+        const newMetric = await getMetrics();
+        return res.status(200).json(newMetric);
+      } catch (err) {
+        return res.status(400).send(err);
+      }
     }
-  } catch (err) {
-    // add error handling
-  }
 }
