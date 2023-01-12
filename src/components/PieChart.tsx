@@ -3,6 +3,9 @@ import { Pie } from 'react-chartjs-2';
 import { Chart, ArcElement } from 'chart.js';
 import Alerts from './Alerts'; 
 
+https://nextjs.org/docs/routing/introduction
+
+
 Chart.register(ArcElement);
 
 interface pieProps {
