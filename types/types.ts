@@ -1,4 +1,4 @@
-export interface MetricCollection {
+export interface MetricCollection extends Metrics {
   //one instance of a metric
 
   used_memory: number; // current used memory

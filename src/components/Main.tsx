@@ -57,7 +57,7 @@ export default function Main() {
           setMetrics([...metrics, response.data]);
         }        
       }
-      console.log(metrics);
+      // console.log(metrics);
       // return response.data;
     } catch (err) {
       console.log(err);

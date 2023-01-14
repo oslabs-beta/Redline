@@ -5,6 +5,7 @@ import LineGraph from './LineGraph';
 import MetricBox from './MetricBox';
 import { MetricCollection, Units } from '../../types/types';
 import { SymbolDisplayPartKind } from 'typescript';
+import ScatterChart from './ScatterChart';
 
 interface containerProps {
   metrics: MetricCollection[];
@@ -67,6 +68,9 @@ export default function MetricContainer(props: containerProps): JSX.Element {
           name='Hit Rate'
           labels={['Hits', 'Misses']}
         />
+      </div>
+      <div className='graphContainer'>
+        <ScatterChart metrics={metrics}/>
       </div>
     </div>
   );
