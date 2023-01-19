@@ -3,6 +3,7 @@ import '../styles/sidebar.scss'
 import '../styles/navbar.scss'
 import '../styles/modal.scss'
 import '../styles/charts.scss'
+import '../styles/signup.scss'
 
 import type { AppProps } from 'next/app'
 
