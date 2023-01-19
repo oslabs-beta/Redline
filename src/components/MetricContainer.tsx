@@ -6,7 +6,7 @@ import MetricBox from './MetricBox';
 import { MetricCollection, Units } from '../../types/types';
 import { SymbolDisplayPartKind } from 'typescript';
 import ScatterChart from './ScatterChart';
-import DynamicLineContainer from './DynamicLineContainer';
+import DynamicLineGraph from './DynamicLineGraph';
 
 interface containerProps {
   metrics: MetricCollection[];
@@ -52,7 +52,7 @@ export default function MetricContainer(props: containerProps): JSX.Element {
         <LineGraph
           lineData={metrics.map((metric) => metric.instantaneous_ops_per_sec)}
           title={'Operations Per Second'}
-          axesLabels={['Elapsed time (seconds)', 'Operations']}
+          axesLabels={['Elapsed time (seconds)', 'Bytes']}
         />
       </div>
       <div className='graphContainer'>
@@ -74,7 +74,7 @@ export default function MetricContainer(props: containerProps): JSX.Element {
         <ScatterChart metrics={metrics} />
       </div>
       <div className='graphContainer'>
-        <DynamicLineContainer metrics={metrics} />
+        <DynamicLineGraph metrics={metrics} />
       </div>
     </div>
   );
