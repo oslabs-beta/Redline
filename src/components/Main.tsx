@@ -15,25 +15,6 @@ export default function Main() {
   const savedCallback = useRef(retrieveData); // use retrieveData fn thru useRef so it has access to updated metrics
   savedCallback.current = retrieveData;  
 
-  // function intervalAction() {}
-  //   const getData = async () => {
-  //     try {
-  //       const response = await axios.post(
-  //         'http://localhost:3000/api/retrieveMetrics'
-  //       );
-  //       setMetrics(response.data.allData);
-  //       setPieData(response.data.allData.used_memory_dataset_perc);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   setTimeout(() => {
-  //     getData();
-  //     intervalAction();
-  //   }, 2_000);
-  // }
-  // useInterval(retrieveData, delay)
-
   useEffect(() => { // setup data fetching interval
     // console.log('datafetch', connected);
     if(connected) { // if connected, then set fetch interval
@@ -78,8 +59,7 @@ export default function Main() {
             data: metricEndpoint // uses current endpoint as body sent in request
           })        
           console.log(response);
-          // if(response.status === 200) { // if successful disconnect, reset metrics array for new endpoint
-          // console.log('Connected to Redis endpoint:', metricEndpoint.nickname)
+
           isConnected(true); // if no error, set current connected state to true       
         } catch (err) {
           console.log('Error:', err)
