@@ -19,9 +19,9 @@ export default function NavBar() {
 
       <div className='rightNavBar'>
 
-      <Link href = '/login'>
+      <a href = '/api/auth/login'>
       <Image id='loginIcon' src={Login} alt='Login Button'/>
-      </Link>
+      </a>
 
       <Link href = '/docs'>
       <Image id='docsIcon' src={Docs} alt='Docs Button'/>

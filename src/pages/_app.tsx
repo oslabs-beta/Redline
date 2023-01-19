@@ -6,7 +6,12 @@ import '../styles/charts.scss'
 import '../styles/signup.scss'
 
 import type { AppProps } from 'next/app'
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+  <UserProvider>
+    <Component {...pageProps} />
+  </UserProvider>
+  )
 }
