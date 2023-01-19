@@ -3,24 +3,27 @@ import { CategoryScale, Chart, registerables } from 'chart.js';
 import { setLabels } from 'react-chartjs-2/dist/utils';
 import { Line } from 'react-chartjs-2';
 import { Units } from '../../types/types';
-import Alerts from './Alerts'; 
-
+import Alerts from './Alerts';
 
 Chart.register(...registerables);
 
 interface lineProps {
   lineData: number[];
-  title: string,
-  axesLabels: string[],
+  title: string;
+  axesLabels: string[];
 }
 
-export default function LineGraph({ lineData, title, axesLabels }: lineProps): JSX.Element {
+export default function LineGraph({
+  lineData,
+  title,
+  axesLabels,
+}: lineProps): JSX.Element {
   // console.log(lineData);
   const labels: number[] = [];
   // hard codes to be replaced with dynamic logic/info from user
-  const metric:string = title
+  const metric: string = title;
   // replace the hard coded 'bytes' below with the types from types.ts file based on the x / y axis labels
-  const unit:string = 'bytes'
+  const unit: string = 'bytes';
 
   lineData.forEach((el, ind) => {
     labels.push(ind); // [1,2,3,4,5,6]
@@ -60,7 +63,7 @@ export default function LineGraph({ lineData, title, axesLabels }: lineProps): J
           },
         }}
       />
-      <Alerts data={lineData} metric={metric} unit={unit}/>
+      <Alerts data={lineData} metric={metric} unit={unit} />
     </div>
   );
 }

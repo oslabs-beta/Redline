@@ -1,4 +1,4 @@
-export interface MetricCollection {
+export interface MetricCollection extends Metrics {
   //one instance of a metric
 
   used_memory: number; // current used memory
@@ -42,4 +42,9 @@ export interface Endpoint {
   port: number,
   password: string,
   nickname: string
+}
+
+export interface ServerError {
+  log?: string,
+  message?: { err: string }
 }
