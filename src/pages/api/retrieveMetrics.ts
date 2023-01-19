@@ -13,7 +13,7 @@ export default async function handler(
       const newMetric = await getMetrics();
       // adjust return
       // console.log('in api call', newMetric);
-      res.status(200).json(newMetric);
+      return res.status(200).json(newMetric);
     }
   } catch (err) {
     // add error handling
