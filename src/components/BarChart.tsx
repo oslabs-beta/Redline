@@ -3,6 +3,7 @@ import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import { isPropertySignature } from 'typescript';
 import Alerts from './Alerts'; 
+import styles from './styles/Charts.module.scss';
 
 
 interface barProps {
@@ -55,7 +56,7 @@ export default function BarChart({ barData, name, labels }: barProps) {
   };
 
   return (
-    <div className='graphWrapper'>
+    <div className={styles.graphWrapper}>
       <h2>{name}</h2>
       <Bar options={options} data={data} />
       <Alerts data={barData} metric={metric} unit={unit}/>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './styles/Modal.module.scss';
 
 type Props = {
   title: string;
@@ -34,14 +35,14 @@ export default function AlertModal({
   const preventAutoClose = (e: React.MouseEvent) => e.stopPropagation();
 
   return (
-    <div className='modalOverlay' onClick={onClose}>
-      <div className='modal' onClick={preventAutoClose}>
+    <div className={styles.modalOverlay} onClick={onClose}>
+      <div className={styles.modal} onClick={preventAutoClose}>
         <h3>{title}</h3>
-        <div className='modalContent'>
+        <div className={styles.modalContent}>
           <form>
             <select
               onChange={(event) => setDropDownValue(event.target.value)}
-              className='dropdown'
+              className={styles.dropdown}
               name=''
               id=''
             >
@@ -58,13 +59,13 @@ export default function AlertModal({
             <br />
             <br />
             <button
-              className='togglebutton'
+              className={styles.togglebutton}
               type='submit'
               onClick={confirmAndClose}
             >
               Confirm
             </button>
-            <button className='togglebutton' onClick={onClose}>
+            <button className={styles.togglebutton} onClick={onClose}>
               Cancel
             </button>
           </form>

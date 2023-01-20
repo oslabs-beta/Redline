@@ -7,6 +7,7 @@ import { MetricCollection, Units } from '../../types/types';
 import { SymbolDisplayPartKind } from 'typescript';
 import ScatterChart from './ScatterChart';
 import DynamicLineGraph from './DynamicLineGraph';
+import styles from './styles/Charts.module.scss';
 
 interface containerProps {
   metrics: MetricCollection[];
@@ -32,15 +33,23 @@ export default function MetricContainer(props: containerProps): JSX.Element {
     hitRate = keyspace_hits / (keyspace_hits + keyspace_misses);
   }
   return (
-    <div className='metricContainer'>
-      <div className='graphContainer'>
+    <div className={styles.metricContainer}>
+       <div className={styles.graphContainer}>
+        <MetricBox boxData={connected_clients} name='Connected Clients' />
+        {/* <PieChart
+          pieData={usedMem ? [usedMem, 100 - usedMem] : [0]}
+          name='Memory Usage'
+          labels={['Memory Used', 'Memory Available']}
+        /> */}
+      </div>< br />
+      <div className={styles.graphContainer}>
         <LineGraph
           lineData={metrics.map((metric) => metric.used_memory)}
           title={'Memory Usage Over Time'}
           axesLabels={['Elapsed time (seconds)', 'Bytes']}
         />
       </div>
-      <div className='graphContainer'>
+      <div className={styles.graphContainer}>
         {/* <BarChart
           barData={metrics.map((metric) => [
             metric.used_memory,
@@ -55,25 +64,17 @@ export default function MetricContainer(props: containerProps): JSX.Element {
           axesLabels={['Elapsed time (seconds)', 'Bytes']}
         />
       </div>
-      <div className='graphContainer'>
-        <MetricBox boxData={connected_clients} name='Connected Clients' />
-        {/* <PieChart
-          pieData={usedMem ? [usedMem, 100 - usedMem] : [0]}
-          name='Memory Usage'
-          labels={['Memory Used', 'Memory Available']}
-        /> */}
-      </div>
-      <div className='graphContainer'>
+      <div className={styles.graphContainer}>
         <PieChart
           pieData={keyspace_hits ? [keyspace_hits, keyspace_misses] : [0]}
           name='Hit Rate'
           labels={['Hits', 'Misses']}
         />
       </div>
-      <div className='graphContainer'>
+      <div className={styles.graphContainer}>
         <ScatterChart metrics={metrics} />
       </div>
-      <div className='graphContainer'>
+      <div className={styles.graphContainer}>
         <DynamicLineGraph metrics={metrics} />
       </div>
     </div>

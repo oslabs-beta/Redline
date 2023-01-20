@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Alerts from './Alerts'; 
+import styles from './styles/Charts.module.scss'
 
 interface boxProps {
   boxData: number;
@@ -11,7 +12,7 @@ export default function MetricBox({ name, boxData }: boxProps) {
   const unit: string = 'clients';
 
   return (
-    <div className='graphWrapper'>
+    <div className={styles.graphWrapper}>
       <h2>{name}</h2>
           <h1>
             {boxData ? `${boxData} ${unit}` : ''}
