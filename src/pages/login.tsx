@@ -11,7 +11,7 @@ export default function Login() {
   const router = useRouter();
 
   async function authenticateUser(
-    event: HTMLElementEvent<HTMLTextAreaElement>
+    event: any
   ) {
     event.preventDefault();
     const target = event.target;

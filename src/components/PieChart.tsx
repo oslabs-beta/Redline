@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart, ArcElement } from 'chart.js';
 import Alerts from './Alerts'; 
-
+import styles from './styles/Charts.module.scss';
 https://nextjs.org/docs/routing/introduction
 
 
@@ -19,7 +19,7 @@ export default function PieGraph({pieData, name, labels }: pieProps): JSX.Elemen
   const unit:string = 'percent'
   // loop through the data we recieve - we should get back an array of objects
   return (
-    <div className='graphWrapper'>
+    <div className={styles.graphWrapper}>
       <h2>{name}</h2>
       <Pie
         className='pie'

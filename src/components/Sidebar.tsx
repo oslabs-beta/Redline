@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BsTrash } from 'react-icons/bs';
 import { GrAddCircle } from 'react-icons/gr';
 import { Endpoint } from '../../types/types';
+import styles from './styles/SideBar.module.scss'
 
 interface SidebarProps {
   setMetricEndpoint: React.Dispatch<React.SetStateAction<Endpoint | undefined>>;
@@ -90,7 +91,7 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
 
   return (
     <div>
-      <section className='formContainer'>
+      <section className={styles.formContainer}>
         <form onSubmit={handleFormSubmit} id='addEndpointForm'>
           <label>
             Host
@@ -144,7 +145,7 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
           </label>
           <br />
           <br />
-          <button className='addEndpoint' type='submit' role='button'>
+          <button className={styles.addEndpoint} type='submit' role='button'>
             <GrAddCircle size={30} color={'313614'} />
           </button>
         </form>
@@ -152,12 +153,12 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
           <br />
           {endpoints.map((object, index) => {
             return (
-              <div className='endpointContainer' key={index}>
+              <div className={styles.endpointContainer} key={index}>
                 <button
                   onClick={() => {
                     deleteEndpoint(object.nickname);
                   }}
-                  className='delete'
+                  className={styles.delete}
                   type='submit'
                 >
                   <BsTrash size={20} color={'313614'} />
@@ -166,7 +167,7 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
                   onClick={() => {
                     storeCurrentEndpoint(object.nickname);
                   }}
-                  className='eachEndpoint'
+                  className={styles.eachEndpoint}
                   type='submit'
                 >
                   {object.nickname}

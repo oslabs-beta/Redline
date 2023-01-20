@@ -4,6 +4,7 @@ import { Line } from 'react-chartjs-2';
 import { Units, MetricCollection } from '../../types/types';
 import Alerts from './Alerts';
 import DropDown from './DropDown';
+import styles from './styles/Charts.module.scss';
 
 Chart.register(...registerables);
 
@@ -68,7 +69,7 @@ export default function DynamicLineGraph({
   };
 
   return (
-    <div className='graphWrapper'>
+    <div className={styles.graphWrapper}>
       <div style={style}>
         <DropDown axisState={stateY} setStateFn={setStateY} axis={'Y'} />
         <h2>vs Time</h2>

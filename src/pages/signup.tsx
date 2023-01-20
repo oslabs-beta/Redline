@@ -16,7 +16,7 @@ export default function Signup() {
 
   const router = useRouter();
 
-  async function createUser(event: HTMLElementEvent<HTMLTextAreaElement>) {
+  async function createUser(event: any) {
     // logic for sending a post fetch request to the backend passing in the first and last name, email and password
     event.preventDefault();
     const target = event.target;
