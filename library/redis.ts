@@ -65,7 +65,7 @@ export const getMetrics = async () => { // depending on 'current' db (hold in st
       baseMet = {...rawData};
     }
     calcSessionMetrics(rawData);
-    console.log(rawData);
+    // console.log(rawData);
     return rawData;
 };
 
