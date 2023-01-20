@@ -3,6 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BsFillBellFill } from 'react-icons/bs';
 import AlertModal from './AlertModal';
+import styles from './styles/Modal.module.scss';
 
 type Props = {
   data: number[] | number[][];
@@ -53,10 +54,10 @@ export default function Push({ data, metric, unit }: Props) {
 
   return (
     <div>
-      <div className='alert'>
+      <div className={styles.alert}>
         {/* create a button for the chart components */}
         <button
-          className='alertButton'
+          className={styles.alertButton}
           onClick={() => {
             console.log('create alert clicked');
             setIsOpened(true);

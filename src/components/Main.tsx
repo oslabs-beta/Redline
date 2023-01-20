@@ -4,6 +4,7 @@ import Sidebar from './Sidebar';
 import MetricContainer from './MetricContainer';
 import { MetricCollection, Endpoint } from '../../types/types';
 import NavBar from './NavBar'; 
+import {useUser} from '@auth0/nextjs-auth0/client';
 
 export default function Main() {
   // Declare state that we pass down to sidebar. Sidebar is where the user is entering the endpoints and where the declared state will be updated.
@@ -15,6 +16,8 @@ export default function Main() {
   const savedCallback = useRef(retrieveData); // use retrieveData fn thru useRef so it has access to updated metrics
   savedCallback.current = retrieveData;  
 
+  const { user } = useUser(); 
+console.log(user); 
   // function intervalAction() {}
   //   const getData = async () => {
   //     try {

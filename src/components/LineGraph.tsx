@@ -4,6 +4,7 @@ import { setLabels } from 'react-chartjs-2/dist/utils';
 import { Line } from 'react-chartjs-2';
 import { Units } from '../../types/types';
 import Alerts from './Alerts';
+import styles from './styles/Charts.module.scss';
 
 Chart.register(...registerables);
 
@@ -42,7 +43,7 @@ export default function LineGraph({
     ],
   };
   return (
-    <div className='graphWrapper'>
+    <div className={styles.graphWrapper}>
       <h2>{title}</h2>
       <Line
         data={data}
