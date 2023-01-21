@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/pages/api/controllers/userHandling.ts",
+    "src/pages/api/controllers/createUser.ts",
     "src/database/userModel.js"
   ],
   "exclude": [

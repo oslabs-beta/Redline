@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { BsTrash } from 'react-icons/bs';
 import { GrAddCircle } from 'react-icons/gr';
 import { Endpoint } from '../../types/types';
-import styles from './styles/SideBar.module.scss'
+import styles from './styles/SideBar.module.scss';
+import { useUser } from '@auth0/nextjs-auth0/client';
+import axios from 'axios';
+import deleteUserEndpoint from '../components/sidebarFunctions/deleteUserEndpoint';
+import storeUserEndpoint from '../components/sidebarFunctions/storeUserEndpoint';
 
 interface SidebarProps {
   setMetricEndpoint: React.Dispatch<React.SetStateAction<Endpoint | undefined>>;
@@ -16,23 +20,43 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
   const [nickname, setNickname] = useState('');
   const [endpoints, setEndpoints] = useState<Endpoint[]>([]);
 
-  // when the form is submitted, it will trigger the function below, adding the new endpoint to state and local storage
+  const { user } = useUser();
+
+  // Get a logged-in users endpoints
+  async function getUserEndpoints() {
+    try {
+      if (user) {
+        const response = await axios.get(
+          `api/controllers/userEndpoints?emailaddress=${user.name}`
+        );
+        setEndpoints(response.data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  useEffect(() => {
+    if (user) {
+      let data = getUserEndpoints();
+      console.log(data);
+    }
+  }, [user]);
+
+  // Stores users who aren't logged ins endpoints.
   function handleFormSubmit(event: any) {
     event.preventDefault();
-
-    // checks to see if an endpoint with this nickname already exists.
     let repeat: boolean = false;
 
     for (const object of endpoints) {
       if (object['nickname'] === nickname) repeat = true;
     }
 
-    if (repeat) 
+    if (repeat)
       return alert(
         'Warning: endpoint with this nickname already exists, please rename the endpoint and try again.'
       );
 
-    // if it doesn't exist, run the code below to add the new endpoint
     const newEndpoint: Endpoint = {
       host: host,
       port: port ?? 6739,
@@ -40,53 +64,59 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
       nickname: nickname,
     };
 
+    if (user) {
+      storeUserEndpoint(user.name, newEndpoint);
+    }
+
     const previousEndpoints = endpoints;
     setEndpoints([...previousEndpoints, newEndpoint]);
 
-    localStorage.setItem('allEndpoints', JSON.stringify([...previousEndpoints, newEndpoint]));
-    localStorage.setItem(nickname, JSON.stringify(newEndpoint));
+    sessionStorage.setItem(
+      'allEndpoints',
+      JSON.stringify([...previousEndpoints, newEndpoint])
+    );
+    sessionStorage.setItem(nickname, JSON.stringify(newEndpoint));
   }
 
   // this ensures that the endpoints in state don't get rewritten
-  // loads upon refresh
   useEffect(() => {
-    const allEndpoints = localStorage.getItem('allEndpoints');
+    const allEndpoints = sessionStorage.getItem('allEndpoints');
     if (allEndpoints !== null) {
       const parsedEndpoints = JSON.parse(allEndpoints);
       setEndpoints(parsedEndpoints);
     }
   }, []);
 
-  // stores the most recently clicked on endpoint in localStorage so it can be spun up when metrics are displayed on page.
+  // stores the most recently clicked on endpoint in sessionStorage so it can be spun up when metrics are displayed on page.
   function storeCurrentEndpoint(endpoint: string) {
-    // fire the setter function prop drilled from Main.tsx to set the Main.tsx state for the CurrentEndpoint and set to the clicked endpoint
     endpoints.forEach((object) => {
       if (object['nickname'] === endpoint) {
-        localStorage.setItem('currentEndpoint', JSON.stringify(object));
+        sessionStorage.setItem('currentEndpoint', JSON.stringify(object));
         setMetricEndpoint(object);
       }
     });
   }
 
-  // delete an endpoint when user clicks delete
   function deleteEndpoint(endpoint: string) {
-    localStorage.removeItem(endpoint);
+    if (user) {
+      deleteUserEndpoint(user.name, endpoint);
+    }
+
+    sessionStorage.removeItem(endpoint);
     if (
-      JSON.parse(localStorage.getItem('currentEndpoint') || '{}').nickname ===
+      JSON.parse(sessionStorage.getItem('currentEndpoint') || '{}').nickname ===
       endpoint
     )
-      localStorage.removeItem('currentEndpoint');
+      sessionStorage.removeItem('currentEndpoint');
 
-    // rewrite using reduce
     const newEndpoints = [];
     for (let data of endpoints) {
       if (data.nickname !== endpoint) {
         newEndpoints.push(data);
       }
     }
-
     setEndpoints(newEndpoints);
-    localStorage.setItem('allEndpoints', JSON.stringify(newEndpoints));
+    sessionStorage.setItem('allEndpoints', JSON.stringify(newEndpoints));
   }
 
   return (
@@ -117,8 +147,7 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
               }}
             />
           </label>
-          <br />
-          <br />
+          <br /><br />
           <label>
             Password
             <br />
@@ -130,8 +159,7 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
               }}
             />
           </label>
-          <br />
-          <br />
+          <br /><br />
           <label>
             Nickname
             <br />
@@ -143,8 +171,7 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
               }}
             />
           </label>
-          <br />
-          <br />
+          <br /><br />
           <button className={styles.addEndpoint} type='submit' role='button'>
             <GrAddCircle size={30} color={'313614'} />
           </button>

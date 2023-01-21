@@ -12,7 +12,6 @@ import styles from './styles/NavBar.module.scss'
 
 export default function NavBar() {
   const { user } = useUser(); 
-  // console.log(user); 
 
   return (
     <div className={styles.navBarWrapper}>
