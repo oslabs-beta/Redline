@@ -44,7 +44,7 @@ export default function Main() {
       }, delay);
       return () => clearInterval(id);
     }
-  }, [connected, delay]); // when endpoint changes, clear previous interval and start new one
+    }, [connected, delay]); // when endpoint changes, clear previous interval and start new one
 
   async function retrieveData() {
     try {
@@ -58,7 +58,7 @@ export default function Main() {
           // setMetrics((metrics) => [...metrics, response.data]);
           setMetrics([...metrics, response.data]);
         }
-      }
+        }
       // console.log(metrics);
       // return response.data;
     } catch (err) {
@@ -83,9 +83,8 @@ export default function Main() {
             data: metricEndpoint, // uses current endpoint as body sent in request
           });
           console.log(response);
-          // if(response.status === 200) { // if successful disconnect, reset metrics array for new endpoint
-          // console.log('Connected to Redis endpoint:', metricEndpoint.nickname)
-          isConnected(true); // if no error, set current connected state to true
+
+          isConnected(true); // if no error, set current connected state to true       
         } catch (err) {
           console.log('Error:', err);
           console.log('Could not connect to:', metricEndpoint.nickname);
@@ -110,7 +109,7 @@ export default function Main() {
   }, [metricEndpoint]);
 
   return (
-    <div>
+    <div className='bodyContainer'>
       {/* <button onClick={}>GET LATENCY</button> */}
       {/* <button onClick={ () => setMetricEndpoint({'host': '127.0.0.1', 'port': 6379, 'password': '', 'nickname': 'nickname'}) }>CONNECT TO local</button>
       <button onClick={ () => setMetricEndpoint({'host': 'redis-12203.c289.us-west-1-2.ec2.cloud.redislabs.com', 'port': 12202, 'password': 'GzxNr6qE7kXSHH2boTMycxZQXo9wicSE', 'nickname': 'NA-free-db'}) }>CONNECT TO NA-free-db</button> */}

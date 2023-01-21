@@ -5,7 +5,7 @@ import { Line, Scatter } from 'react-chartjs-2';
 import { Units, MetricCollection, Metrics } from '../../types/types';
 import Alerts from './Alerts'; 
 import DropDown from './DropDown';
-// import styles from './ScatterChart.module.scss'
+// import stylesScatter from './ScatterChart.module.scss'
 import styles from './styles/Charts.module.scss';
 
 
@@ -79,19 +79,22 @@ export default function ScatterChart({ metrics }: scatterProps): JSX.Element {
     },
     scales: {
       x: {
-        title: { display: true, text: 'x' },
+        title: { display: true, text: Units[stateX] },
       },
       y: {
-        title: { display: true, text: 'y' },
+        title: { display: true, text: Units[stateY] },
         beginAtZero: true,
       },
     },
   }
   return (
     <div className={styles.graphWrapper}>
-      <h2>{stateY} vs {stateX}</h2>
-      <DropDown axisState={stateY} setStateFn={setStateY} axis={'Y'}/>
-      <DropDown axisState={stateX} setStateFn={setStateX} axis={'X'}/>
+      <div className={styles.header}>
+        <DropDown axisState={stateY} setStateFn={setStateY} axis={'Y'}/>
+        <h2>vs</h2>
+        <DropDown axisState={stateX} setStateFn={setStateX} axis={'X'}/>        
+      </div>
+
       <Scatter
         data={ data }
         options={ options }

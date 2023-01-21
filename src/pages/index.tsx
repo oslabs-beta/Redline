@@ -169,3 +169,21 @@ export default function Landing() {
       </div>
   );
 }
+
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+//   const { user } = useUser();
+
+//   return { props: {'hello': 'world'} }
+// }
+
+// export const getServerSidePropsResultWithSession: GetServerSidePropsResult = () => {
+
+// }
+
+// export const getServerSideProps: GetServerSideProps = ({
+//   async getServerSideProps(context) {
+//     const session = getSession(context.req, context.res);
+//     console.log(session);
+//     return { props: { session } }
+//   }
+// })

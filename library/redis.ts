@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import Redis from 'ioredis';
 import { Metrics, Units, MetricCollection, Endpoint, ServerError } from '../types/types';
-
 let redis: Redis;
+let baseMet: Metrics = {};
 
 export const connectRedis = (body: Endpoint) => { // input of host, port, password to connect Redis client
   // deconstruct the hostname, port and password from the frontend request body
@@ -36,6 +36,7 @@ export const connectRedis = (body: Endpoint) => { // input of host, port, passwo
 
 export const disconnectRedis = () => {
   // console.log(redis);
+  resetBaseMetrics();
   redis.disconnect();
 }
 
@@ -43,22 +44,48 @@ export const getMetrics = async () => { // depending on 'current' db (hold in st
     // Grab redis data metrics
     const data = await redis.info();
     // Returned data string from Redis to be cleaned up and passed into an array. The data in the array should be a string.
-    const cleanData: string[] = data
-      .trim()
-      .replace(/[' ']/g, '_')
-      .split('\r\n');
+    const redisinfo = require('redis-info').parse(data);
 
-      const allData: Metrics = {};
-    const keys = Object.keys(Units);
+    const rawData: Metrics = {};
 
-    cleanData.forEach((metric: string) => {
-      const [metricKey, metricVal]: string[] = metric.split(':');
-      if (metricKey && metricVal && keys.includes(metricKey))
-        allData[metricKey] = +metricVal; // { data: +metricVal, unit: mc[metricKey] };
-    });
-    // allData is an object w/ key-val pairs --> loop thru keys and see if matches a key in MetricCollection
-    return allData;
+    for (const key in Units) {
+      if(key === 'keys' || key === 'expires' || key === 'avg_ttl') { // if key is database (val is nested obj)
+        if (Object.keys(redisinfo['databases']).length > 0) { // database = { '0': { 'keys': keys, 'expires': expires, 'avg_ttl': avg_ttl } }
+          rawData[key] = redisinfo['databases']['0'][key];       
+        }
+        else {
+          rawData[key] = 0;
+        }
+      }
+      else if (key in redisinfo) { // normal key metric found in redisinfo
+        rawData[key] = +redisinfo[key];        
+      }
+    }
+    if (Object.keys(baseMet).length === 0) {
+      baseMet = {...rawData};
+    }
+    calcSessionMetrics(rawData);
+    // console.log(rawData);
+    return rawData;
 };
+
+const resetBaseMetrics = () => { // reset base metrics compared against
+  baseMet = {};
+}
+
+const calcSessionMetrics = (data: Metrics) => { // calculate current session metrics
+  for (const key in Units) {
+    if (!(key in data)) { // if undefined val for key in data, calculate session value
+      if (key === 'keyspace_hitratio_session') {
+        data[key] = data['keyspace_hits_session'] / (data['keyspace_hits_session'] + data['keyspace_misses_session']);
+      }
+      else {
+        const origKey = key.slice(0,-8);
+        data[key] = data[origKey] - baseMet[origKey];        
+      }
+    }
+  }
+}
 
 // export const getLatency = async () => {
 //   if(redis) {

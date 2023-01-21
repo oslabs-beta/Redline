@@ -1,0 +1,22 @@
+
+.graphWrapper {
+  // flex-grow: 1;
+  width: 180px;
+  border: solid 1px #313641;
+  border-radius: 10px;
+  padding: 6px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    margin: 0;
+    text-align: center;
+    color: #313614;
+  }
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    text-align: center;
+    font-size: 20px;
+  }
+}
