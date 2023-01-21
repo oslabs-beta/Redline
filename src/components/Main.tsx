@@ -44,7 +44,7 @@ export default function Main() {
       }, delay);
       return () => clearInterval(id);
     }
-  }, [connected, delay]); // when endpoint changes, clear previous interval and start new one
+    }, [connected, delay]); // when endpoint changes, clear previous interval and start new one
 
   async function retrieveData() {
     try {
@@ -58,7 +58,7 @@ export default function Main() {
           // setMetrics((metrics) => [...metrics, response.data]);
           setMetrics([...metrics, response.data]);
         }
-      }
+        }
       // console.log(metrics);
       // return response.data;
     } catch (err) {
