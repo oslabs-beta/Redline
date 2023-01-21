@@ -1,5 +1,111 @@
+@media only screen and (max-width: 1000px) {
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    text-align: center;
+    color: #313614;
+    font-size: 1.5vw;
+  }
+}
+
+.header {
+  font-family: 'DM Serif Display', serif;
+  font-size: 4vw;
+  color: #313641;
+  width: 50vw;
+  padding: 1vw;
+}
+
+.chart {
+  width: 40vw;
+  height: auto;
+  padding: 1vw;
+}
+
+#button {
+  outline: 0;
+  border: solid;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2vw;
+  letter-spacing: 3px;
+  color: #313641;
+  border-color: #313641;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  background-color: transparent;
+  touch-action: manipulation;
+}
+
+.caption {
+  font-family: 'Montserrat', sans-serif;
+  color: #313641;
+  font-size: 1.5vw;
+  margin: 2vw;
+//   padding: 2vw;
+  text-align: center;
+}
+
+.keyFeatures {
+  display: grid;
+  grid-template-columns: repeat(3, 30vw);
+}
+
+.feature {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  color: #313641;
+  margin: 3vw;
+  border: solid 1px #313641;
+  border-radius: 10px;
+  padding: 1vw;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.team {
+  display: flex;
+  text-align: center;
+  padding-top: 3vw;
+  padding-bottom: 4vw;
+  h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3vw;
+    color: #313614;
+  }
+  p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1vw;
+    color: #313614;
+  }
+}
+
 .teamPhoto {
-    width: 225px;
+  width: 13vw;
+  height: auto;
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+
+.person {
+  color: #313641;
+}
+
+.logo {
+    height: 20px;
+    width: auto; 
+    padding: 2px;
+}
+
+.testimonial {
+    margin: 0 40px;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    width: 30vw;
     height: auto;
-    margin: 20px;
 }
