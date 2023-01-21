@@ -19,6 +19,7 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
   const [password, setPassword] = useState('');
   const [nickname, setNickname] = useState('');
   const [endpoints, setEndpoints] = useState<Endpoint[]>([]);
+  const [repeatWarning, setRepeatWarning] = useState('');
 
   const { user } = useUser();
 
@@ -53,9 +54,10 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
     }
 
     if (repeat)
-      return alert(
+      return setRepeatWarning(
         'Warning: endpoint with this nickname already exists, please rename the endpoint and try again.'
       );
+    else setRepeatWarning('');
 
     const newEndpoint: Endpoint = {
       host: host,
@@ -104,7 +106,9 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
 
     sessionStorage.removeItem(endpoint);
     if (
-      JSON.parse(sessionStorage.getItem('currentEndpoint') || '{}').nickname === endpoint)
+      JSON.parse(sessionStorage.getItem('currentEndpoint') || '{}').nickname ===
+      endpoint
+    )
       sessionStorage.removeItem('currentEndpoint');
 
     const newEndpoints = [];
@@ -120,13 +124,13 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
   return (
     <div>
       <section className={styles.formContainer}>
-        <form onSubmit={handleFormSubmit} id='addEndpointForm'>
+        <form onSubmit={handleFormSubmit} id="addEndpointForm">
           <label>
             Host
             <br />
             <input
-              type='text'
-              name='host'
+              type="text"
+              name="host"
               onChange={(event) => {
                 setHost(event.target.value);
               }}
@@ -138,42 +142,46 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
             Port
             <br />
             <input
-              type='text'
-              name='port'
+              type="text"
+              name="port"
               onChange={(event) => {
                 setPort(+event.target.value);
               }}
             />
           </label>
-          <br /><br />
+          <br />
+          <br />
           <label>
             Password
             <br />
             <input
-              type='password'
-              name='password'
+              type="password"
+              name="password"
               onChange={(event) => {
                 setPassword(event.target.value);
               }}
             />
           </label>
-          <br /><br />
+          <br />
+          <br />
           <label>
             Nickname
             <br />
             <input
-              type='text'
-              name='nickname'
+              type="text"
+              name="nickname"
               onChange={(event) => {
                 setNickname(event.target.value);
               }}
             />
           </label>
-          <br /><br />
-          <button className={styles.addEndpoint} type='submit' role='button'>
+          <br />
+          <br />
+          <button className={styles.addEndpoint} type="submit" role="button">
             <GrAddCircle size={30} color={'313614'} />
           </button>
         </form>
+        <div className={styles.repeatWarning}>{repeatWarning}</div>
         <div>
           <br />
           {endpoints.map((object, index) => {
@@ -184,7 +192,7 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
                     deleteEndpoint(object.nickname);
                   }}
                   className={styles.delete}
-                  type='submit'
+                  type="submit"
                 >
                   <BsTrash size={20} color={'313614'} />
                 </button>
@@ -193,7 +201,7 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
                     storeCurrentEndpoint(object.nickname);
                   }}
                   className={styles.eachEndpoint}
-                  type='submit'
+                  type="submit"
                 >
                   {object.nickname}
                 </button>
