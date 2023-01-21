@@ -1,12 +1,8 @@
-import React from 'react';
+import Main from '../components/Main'
 
 
-export default function Monitoring() {
-
-    return (
-      <div>
-         <p>COMING SOON</p>
-      </div>
-    )
-  }
-  
+export default function Home() {
+  return (
+    <Main/>
+  )
+}
