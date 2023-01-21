@@ -70,7 +70,7 @@ export default function DynamicLineGraph({
 
   return (
     <div className={styles.graphWrapper}>
-      <div style={style}>
+      <div className={styles.header}>
         <DropDown axisState={stateY} setStateFn={setStateY} axis={'Y'} />
         <h2>vs Time</h2>
       </div>
@@ -86,7 +86,7 @@ export default function DynamicLineGraph({
               title: { display: true, text: 'Elapsed time (seconds)' },
             },
             y: {
-              title: { display: true, text: lineTitle },
+              title: { display: true, text: Units[stateY]},
               beginAtZero: true,
             },
           },

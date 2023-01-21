@@ -20,7 +20,7 @@ const MenuProps = {
   PaperProps: {
     style: {
       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
+      width: 300,
     },
   },
 };
@@ -42,7 +42,7 @@ export default function DropDown({ setStateFn, axis, axisState }:DropDownProps )
   // console.log(axisState)
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 250 }}>
+      <FormControl sx={{ m: 1, width: 150 }}>
         <Select
           displayEmpty
           value={axisState ? axisState : ''}

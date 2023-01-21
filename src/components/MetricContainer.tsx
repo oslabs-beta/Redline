@@ -8,6 +8,8 @@ import { SymbolDisplayPartKind } from 'typescript';
 import ScatterChart from './ScatterChart';
 import DynamicLineGraph from './DynamicLineGraph';
 import styles from './styles/Charts.module.scss';
+import { GrAddCircle } from 'react-icons/gr';
+import TopRow from './TopRow';
 
 interface containerProps {
   metrics: MetricCollection[];
@@ -34,22 +36,36 @@ export default function MetricContainer(props: containerProps): JSX.Element {
   }
   return (
     <div className={styles.metricContainer}>
-       <div className={styles.graphContainer}>
-        <MetricBox boxData={connected_clients} name='Connected Clients' />
-        {/* <PieChart
-          pieData={usedMem ? [usedMem, 100 - usedMem] : [0]}
-          name='Memory Usage'
-          labels={['Memory Used', 'Memory Available']}
-        /> */}
-      </div>< br />
+      {/* <TopRow metrics={metrics}/> */}
+      <div className={styles.topRow}>
+        {/* <div className={styles.graphContainer}> */}
+          <MetricBox
+            boxData={connected_clients}
+            name='Connected Clients'
+            metric={'connected_clients'}
+          />
+        {/* </div> */}
+        {/* <div className={styles.graphContainer}> */}
+          <MetricBox
+            boxData={used_memory}
+            name='Used Memory'
+            metric={'used_memory'}
+          />
+        {/* </div>         */}
+          <button className={styles.addEndpoint} >
+            <GrAddCircle size={30} color={'313614'} />
+          </button>
+      </div>
       <div className={styles.graphContainer}>
-        <LineGraph
+
+      {/* <div className={styles.graphContainer}> */}
+        {/* <LineGraph
           lineData={metrics.map((metric) => metric.used_memory)}
           title={'Memory Usage Over Time'}
           axesLabels={['Elapsed time (seconds)', 'Bytes']}
-        />
-      </div>
-      <div className={styles.graphContainer}>
+        /> */}
+      {/* </div> */}
+      {/* <div className={styles.graphContainer}> */}
         {/* <BarChart
           barData={metrics.map((metric) => [
             metric.used_memory,
@@ -58,24 +74,29 @@ export default function MetricContainer(props: containerProps): JSX.Element {
           name='Memory Usage'
           labels={['Memory Used', 'Memory Available']}
         /> */}
-        <LineGraph
+  
+        <ScatterChart metrics={metrics} />
+        {/* <LineGraph
           lineData={metrics.map((metric) => metric.instantaneous_ops_per_sec)}
           title={'Operations Per Second'}
           axesLabels={['Elapsed time (seconds)', 'Bytes']}
-        />
-      </div>
-      <div className={styles.graphContainer}>
-        <PieChart
+        /> */}
+      {/* </div> */}
+      {/* <DynamicLineGraph metrics={metrics} /> */}
+      {/* <div className={styles.graphContainer}> */}
+        {/* <PieChart
           pieData={keyspace_hits ? [keyspace_hits, keyspace_misses] : [0]}
           name='Hit Rate'
           labels={['Hits', 'Misses']}
-        />
-      </div>
-      <div className={styles.graphContainer}>
+        /> */}
+      {/* </div> */}
+      {/* <div className={styles.graphContainer}> */}
         <ScatterChart metrics={metrics} />
-      </div>
-      <div className={styles.graphContainer}>
+      {/* </div> */}
+      {/* <div className={styles.graphContainer}> */}
         <DynamicLineGraph metrics={metrics} />
+        <DynamicLineGraph metrics={metrics} />
+      {/* </div> */}
       </div>
     </div>
   );
