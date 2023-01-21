@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Luke from '../public/luke.png'; 
 import Alan from '../public/alan.png'; 
 import Elvin from '../public/elvin.png'; 
-import Sakura from '../public/sakura.png'; 
+import Sakura from '../public/sakura.png'
 import styles from '../components/styles/Landing.module.scss'
 export default function Landing() {
   return (

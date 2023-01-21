@@ -104,9 +104,7 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
 
     sessionStorage.removeItem(endpoint);
     if (
-      JSON.parse(sessionStorage.getItem('currentEndpoint') || '{}').nickname ===
-      endpoint
-    )
+      JSON.parse(sessionStorage.getItem('currentEndpoint') || '{}').nickname === endpoint)
       sessionStorage.removeItem('currentEndpoint');
 
     const newEndpoints = [];

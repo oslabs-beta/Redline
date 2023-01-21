@@ -34,14 +34,20 @@ export default function MetricContainer(props: containerProps): JSX.Element {
   }
   return (
     <div className={styles.metricContainer}>
-       <div className={styles.graphContainer}>
-        <MetricBox boxData={connected_clients} name='Connected Clients' />
-        {/* <PieChart
-          pieData={usedMem ? [usedMem, 100 - usedMem] : [0]}
-          name='Memory Usage'
-          labels={['Memory Used', 'Memory Available']}
-        /> */}
-      </div>< br />
+      <div className={styles.graphContainer}>
+        <MetricBox
+          boxData={connected_clients}
+          name='Connected Clients'
+          metric={'connected_clients'}
+        />
+      </div>
+      <div className={styles.graphContainer}>
+        <MetricBox
+          boxData={used_memory}
+          name='Used Memory'
+          metric={'used_memory'}
+        />
+      </div>
       <div className={styles.graphContainer}>
         <LineGraph
           lineData={metrics.map((metric) => metric.used_memory)}
