@@ -5,7 +5,6 @@ import { Line, Scatter } from 'react-chartjs-2';
 import { Units, MetricCollection, Metrics } from '../../types/types';
 import Alerts from './Alerts'; 
 import DropDown from './DropDown';
-// import stylesScatter from './ScatterChart.module.scss'
 import styles from './styles/Charts.module.scss';
 
 

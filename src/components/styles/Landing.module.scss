@@ -1,22 +1,53 @@
-@media only screen and (max-width: 1000px) {
+// @media only screen and (max-width: 1000px) {
+// }
+
+// @media only screen and (min-width: 1440px) {
+//   .landingPage {
+//     width: 1200px;
+//     .wrapper {
+//       // max-width: 1200px;
+//       // justify-items: center;
+//       // padding-left: 10vw;
+//       // padding-right: 10vw;
+//     }
+//   }
+// }
+
+.landingPage {
+  width: 100%;
+  min-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .wrapper {
+  padding-top: 5vw;
   display: flex;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-content: center;
+  width: 1440px;
+  min-width: 800px;
   h1 {
     font-family: 'DM Serif Display', serif;
     text-align: center;
     color: #313614;
-    font-size: 1.5vw;
+    font-size: 25px;
   }
+}
+
+.headerChart {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .header {
   font-family: 'DM Serif Display', serif;
-  font-size: 4vw;
+  font-size: max(60px, 3vw);
   color: #313641;
   width: 50vw;
   padding: 1vw;
@@ -30,13 +61,14 @@
 
 #button {
   outline: 0;
-  border: solid;
   font-family: 'Montserrat', sans-serif;
-  font-size: 2vw;
+  border: solid 1px #313641;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  font-size: 30px;
   letter-spacing: 3px;
   color: #313641;
-  border-color: #313641;
-  border-radius: 8px;
   cursor: pointer;
   position: relative;
   background-color: transparent;
@@ -46,26 +78,38 @@
 .caption {
   font-family: 'Montserrat', sans-serif;
   color: #313641;
-  font-size: 1.5vw;
+  font-size: 20px;
   margin: 2vw;
-//   padding: 2vw;
+  width: 100vw;
+  //   padding: 2vw;
   text-align: center;
 }
 
 .keyFeatures {
-  display: grid;
-  grid-template-columns: repeat(3, 30vw);
+  // display: grid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // grid-template-columns: repeat(3, 30vw);
+  max-width: 1440px;
+  word-wrap: normal;
+  margin-bottom: 25px;
 }
 
 .feature {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   color: #313641;
-  margin: 3vw;
   border: solid 1px #313641;
   border-radius: 10px;
   padding: 1vw;
+  width: min(400px, 25vw);
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+// applies margin only to feature divs that are preceded by a feature div
+.feature + .feature {
+  margin-left: 25px;
 }
 
 .team {
@@ -75,12 +119,12 @@
   padding-bottom: 4vw;
   h2 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.3vw;
+    font-size: 20px;
     color: #313614;
   }
   p {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1vw;
+    font-size: 15px;
     color: #313614;
   }
 }
@@ -97,15 +141,20 @@
 }
 
 .logo {
-    height: 20px;
-    width: auto; 
-    padding: 2px;
+  height: 20px;
+  width: auto;
+  padding: 2px;
 }
 
+
+.marquee-container {
+  max-width: 700px;
+  width: 700px;
+}
 .testimonial {
-    margin: 0 40px;
-    padding-top: 1vw;
-    padding-bottom: 1vw;
-    width: 30vw;
-    height: auto;
+  margin: 0 40px;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  width: 30vw;
+  height: auto;
 }

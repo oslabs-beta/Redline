@@ -180,11 +180,11 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
           </button>
         </form>
         <div className={styles.repeatWarning}>{repeatWarning}</div>
-        <div>
+        <div className={styles.endpointWrapper}>
           <br />
           {endpoints.map((object, index) => {
             return (
-              <div className={styles.endpointContainer} key={index}>
+              <div className={styles.endPointContainer} key={index}>
                 <button
                   onClick={() => {
                     deleteEndpoint(object.nickname);
@@ -209,6 +209,5 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
           })}
         </div>
       </section>
-    // </div>
   );
 }
