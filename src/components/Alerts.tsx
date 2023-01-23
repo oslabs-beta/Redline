@@ -53,7 +53,7 @@ export default function Push({ data, metric, unit }: Props) {
   };
 
   return (
-    <div>
+    <div className={styles.alertWrapper}>
       <div className={styles.alert}>
         {/* create a button for the chart components */}
         <button

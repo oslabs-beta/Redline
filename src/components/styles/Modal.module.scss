@@ -15,10 +15,10 @@
   }
 
   .modal {
-    border-radius: 10px; 
+    border-radius: 10px;
     width: 500px;
     height: 220px;
-    text-align: center; 
+    text-align: center;
     background-color: white;
     z-index: 20;
     position: fixed;
@@ -44,21 +44,23 @@
       font-size: 14px;
     }
 
-    
-      .togglebutton {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 14px;
-        border: 0;
-        border-radius: 5px;
-        padding: 0.5rem 1rem;
-        font-size: 0.8rem;
-        line-height: 1;
-        border: 1px solid #313641;
-        margin: 5px;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 14px;
-      }
+    .togglebutton {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      border: 0;
+      border-radius: 5px;
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+      line-height: 1;
+      border: 1px solid #313641;
+      margin: 5px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+    }
   }
+}
+.alertWrapper {
+  align-self: baseline;
 }
 
 .alertButton {
