@@ -110,12 +110,12 @@ export default function Main() {
   }, [metricEndpoint]);
 
   return (
-    <div className='bodyContainer'>
+    <div className={styles.bodyContainer}>
       {/* <button onClick={}>GET LATENCY</button> */}
       {/* <button onClick={ () => setMetricEndpoint({'host': '127.0.0.1', 'port': 6379, 'password': '', 'nickname': 'nickname'}) }>CONNECT TO local</button>
       <button onClick={ () => setMetricEndpoint({'host': 'redis-12203.c289.us-west-1-2.ec2.cloud.redislabs.com', 'port': 12202, 'password': 'GzxNr6qE7kXSHH2boTMycxZQXo9wicSE', 'nickname': 'NA-free-db'}) }>CONNECT TO NA-free-db</button> */}
       <NavBar />
-      <div className='mainContainer'>
+      <div className={styles.mainContainer}>
         <Sidebar setMetricEndpoint={setMetricEndpoint} />
         <MetricContainer metrics={metrics} />
       </div>
