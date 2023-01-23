@@ -45,6 +45,7 @@
   justify-content: center;
   align-items: center;
   width: 80%;
+  gap: 14px;
   // padding: 0 300px 0 300px;
 }
 
@@ -74,7 +75,8 @@
   border: solid 1px #313641;
   border-radius: 10px;
   padding: 10px;
-  box-shadow: rgba(61, 68, 81, 0.19) 0px 10px 20px, rgba(61, 68, 81, 0.23) 0px 6px 6px;
+  box-shadow: rgba(61, 68, 81, 0.19) 0px 10px 20px,
+    rgba(61, 68, 81, 0.23) 0px 6px 6px;
   font-size: 30px;
   letter-spacing: 3px;
   color: #3d4451;
@@ -115,7 +117,8 @@
   height: fit-content;
   // width: min(400px, 25vw);
   width: 30%;
-  box-shadow: rgba(61, 68, 81, 0.19) 0px 10px 20px, rgba(61, 68, 81, 0.23) 0px 6px 6px;
+  box-shadow: rgba(61, 68, 81, 0.19) 0px 10px 20px,
+    rgba(61, 68, 81, 0.23) 0px 6px 6px;
 }
 
 // applies margin only to feature divs that are preceded by a feature div
