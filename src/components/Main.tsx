@@ -5,6 +5,7 @@ import MetricContainer from './MetricContainer';
 import { MetricCollection, Endpoint } from '../../types/types';
 import NavBar from './NavBar';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import styles from './styles/Main.module.scss';
 
 export default function Main() {
   // Declare state that we pass down to sidebar. Sidebar is where the user is entering the endpoints and where the declared state will be updated.
@@ -44,7 +45,7 @@ export default function Main() {
       }, delay);
       return () => clearInterval(id);
     }
-    }, [connected, delay]); // when endpoint changes, clear previous interval and start new one
+  }, [connected, delay]); // when endpoint changes, clear previous interval and start new one
 
   async function retrieveData() {
     try {
@@ -58,7 +59,7 @@ export default function Main() {
           // setMetrics((metrics) => [...metrics, response.data]);
           setMetrics([...metrics, response.data]);
         }
-        }
+      }
       // console.log(metrics);
       // return response.data;
     } catch (err) {
@@ -84,7 +85,7 @@ export default function Main() {
           });
           console.log(response);
 
-          isConnected(true); // if no error, set current connected state to true       
+          isConnected(true); // if no error, set current connected state to true
         } catch (err) {
           console.log('Error:', err);
           console.log('Could not connect to:', metricEndpoint.nickname);
