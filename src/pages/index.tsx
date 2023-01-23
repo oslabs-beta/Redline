@@ -53,9 +53,10 @@ export default function Landing() {
         {/* header */}
         <div className={styles.headerChart}>
           <div className={styles.header}>
+            <div className={styles.headerHeading}>
             Redis Performance Monitoring with{' '}
             <span style={{ color: '#d55641' }}>Redline</span>.
-            <br />
+            </div>
             <Link href="/api/auth/login">
               {user ? (
                 <Link href="/monitoring">
@@ -117,7 +118,7 @@ export default function Landing() {
           </div>
         </div>
         {/* testimonials */}
-        <Marquee style={{'width': '1000p                                                                                                              x'}}
+        <Marquee style={{'width': '90%', 'height': '260px'}}
         >
           <Image
             src={QeraunosTestimonial}

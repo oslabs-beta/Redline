@@ -24,16 +24,17 @@
 .wrapper {
   padding-top: 5vw;
   display: flex;
+  gap: 15px;
   // flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
-  align-content: center;
+  align-items: center;
   width: 1440px;
-  min-width: 800px;
+  // min-width: 800px;
   h1 {
     font-family: 'DM Serif Display', serif;
     text-align: center;
-    color: #313614;
+    color: #rgba(61, 68, 81);
     font-size: 25px;
   }
 }
@@ -43,20 +44,29 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  width: 80%;
+  gap: 14px;
+  // padding: 0 300px 0 300px;
 }
 
 .header {
   font-family: 'DM Serif Display', serif;
-  font-size: max(60px, 3vw);
+  font-size: max(50px, 2vw);
   color: #313641;
-  width: 50vw;
-  padding: 1vw;
+  width: 50%;
+  // padding: 0 10px 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .chart {
-  width: 40vw;
+  width: 50%;
   height: auto;
-  padding: 1vw;
+  padding: 4px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 #button {
@@ -65,10 +75,11 @@
   border: solid 1px #313641;
   border-radius: 10px;
   padding: 10px;
-  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  box-shadow: rgba(61, 68, 81, 0.19) 0px 10px 20px,
+    rgba(61, 68, 81, 0.23) 0px 6px 6px;
   font-size: 30px;
   letter-spacing: 3px;
-  color: #313641;
+  color: #3d4451;
   cursor: pointer;
   position: relative;
   background-color: transparent;
@@ -77,11 +88,11 @@
 
 .caption {
   font-family: 'Montserrat', sans-serif;
-  color: #313641;
+  color: #3d4451;
   font-size: 20px;
-  margin: 2vw;
-  width: 100vw;
-  //   padding: 2vw;
+  margin: 1vw;
+  width: 90%;
+  padding: 10px 5px 10px 5px;
   text-align: center;
 }
 
@@ -91,7 +102,7 @@
   justify-content: center;
   align-items: center;
   // grid-template-columns: repeat(3, 30vw);
-  max-width: 1440px;
+  max-width: 90%;
   word-wrap: normal;
   margin-bottom: 25px;
 }
@@ -99,12 +110,15 @@
 .feature {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
-  color: #313641;
-  border: solid 1px #313641;
+  color: #3d4451;
+  border: solid 1px #3d4451;
   border-radius: 10px;
-  padding: 1vw;
-  width: min(400px, 25vw);
-  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  padding: 10px;
+  height: fit-content;
+  // width: min(400px, 25vw);
+  width: 30%;
+  box-shadow: rgba(61, 68, 81, 0.19) 0px 10px 20px,
+    rgba(61, 68, 81, 0.23) 0px 6px 6px;
 }
 
 // applies margin only to feature divs that are preceded by a feature div
@@ -114,9 +128,12 @@
 
 .team {
   display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   padding-top: 3vw;
   padding-bottom: 4vw;
+  max-width: 90%;
   h2 {
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
@@ -125,15 +142,15 @@
   p {
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
-    color: #313614;
+    color: #3d4451;
   }
 }
 
 .teamPhoto {
-  width: 13vw;
+  width: 80%;
   height: auto;
-  padding-left: 3vw;
-  padding-right: 3vw;
+  // padding-left: 3vw;
+  // padding-right: 3vw;
 }
 
 .person {
@@ -146,15 +163,14 @@
   padding: 2px;
 }
 
-
-.marquee-container {
-  max-width: 700px;
-  width: 700px;
-}
+// .marquee-container {
+//   max-width: 700px;
+//   width: 700px;
+// }
 .testimonial {
   margin: 0 40px;
-  padding-top: 1vw;
-  padding-bottom: 1vw;
-  width: 30vw;
-  height: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: auto;
+  height: 90%;
 }
