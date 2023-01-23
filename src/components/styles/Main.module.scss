@@ -1,0 +1,16 @@
+.mainContainer {
+  /* display: flex; 
+    justify-content: center;  */
+  display: grid;
+  gap: 30px;
+  padding: 20px;
+  padding-top: 40px;
+  //   box-sizing: border-box;
+  /* background-color: green; */
+  grid-template-columns: 200px 1fr;
+  width: 100%;
+}
+
+.bodyContainer {
+  width: 100vw;
+}

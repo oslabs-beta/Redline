@@ -4,7 +4,6 @@
 .metricContainer {
   display: flex;
   gap: 20px;
-  width: 100vw;
   align-items: center;
   flex-direction: column;
 }
@@ -29,7 +28,7 @@
   border-radius: 10px;
   padding: 10px;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-  width: max(500px, 40%);
+  width: max(600px, 40%);
   height: fit-content;
   display: flex;
   flex-direction: column;
