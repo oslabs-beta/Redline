@@ -122,13 +122,13 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
   }
 
   return (
-    // <div>
       <section className={styles.formContainer}>
         <form onSubmit={handleFormSubmit} id="addEndpointForm">
           <label>
             Host
             <br />
             <input
+              className={styles.input}
               type="text"
               name="host"
               onChange={(event) => {
@@ -142,6 +142,7 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
             Port
             <br />
             <input
+              className={styles.input}
               type="text"
               name="port"
               onChange={(event) => {
@@ -154,6 +155,7 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
             Password
             <br />
             <input
+              className={styles.input}
               type="password"
               name="password"
               onChange={(event) => {
@@ -166,6 +168,7 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
             Nickname
             <br />
             <input
+              className={styles.input}
               type="text"
               name="nickname"
               onChange={(event) => {
@@ -209,6 +212,5 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
           })}
         </div>
       </section>
-    // </div>
   );
 }

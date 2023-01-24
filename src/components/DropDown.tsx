@@ -42,7 +42,7 @@ export default function DropDown({ setStateFn, axis, axisState }:DropDownProps )
   // console.log(axisState)
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 150 }}>
+      <FormControl sx={{ m: 0, width: 200, border: 'none' }}>
         <Select
           displayEmpty
           value={axisState ? axisState : ''}

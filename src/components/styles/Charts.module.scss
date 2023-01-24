@@ -17,14 +17,6 @@
   flex-wrap: wrap;
 }
 
-.topRow {
-  display: flex;
-  justify-content: flex-start;
-  // flex-grow: 1;
-  gap: 10px;
-  width: 100%;
-}
-
 .graphWrapper {
   // flex-grow: 1;
   border: solid 1px #313641;
@@ -52,6 +44,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 8px;
 }
 
 .addEndpoint {

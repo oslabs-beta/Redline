@@ -25,10 +25,8 @@ export default function ScatterChart({ metrics }: scatterProps): JSX.Element {
   const [stateY, setStateY] = useState<string>('');
   const [scatterData, setScatterData] = useState<scatterPoint[]>([]);
   
-  // console.log(lineData);
   const labels: number[] = [];
   // hard codes to be replaced with dynamic logic/info from user
-  // const metric:string = title
   // replace the hard coded 'bytes' below with the types from types.ts file based on the x / y axis labels
   const unit:string = 'bytes'
 
@@ -67,8 +65,6 @@ export default function ScatterChart({ metrics }: scatterProps): JSX.Element {
         data: scatterData, // [array of {x: 10, y: 10}]
         borderColor: 'black',
         borderWidth: 1,
-        // xAxisID: 'time',
-        // yAxisID: 'y'
       },
     ],
   };
