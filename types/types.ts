@@ -47,33 +47,33 @@ export const Units: Units = {
   used_memory_peak: 'bytes',
   keyspace_hits: 'hits',
   keyspace_misses: 'misses',
-  instantaneous_ops_per_sec: 'operations/sec',
+  instantaneous_ops_per_sec: 'ops/sec',
   total_commands_processed: 'commands',
   connected_clients: 'clients',
-  total_connections_received: 'cxns received',
+  total_connections_received: 'cxns',
   instantaneous_input_kbps: 'kb/s',
   instantaneous_output_kbps: 'kb/s',
   total_net_input_bytes: 'bytes',
   total_net_output_bytes: 'bytes',
   evicted_keys: 'keys',
   expired_keys: 'keys',
-  rejected_connections: 'connections rejected',
-  uptime_in_seconds: 'seconds',
+  rejected_connections: 'cxns',
+  uptime_in_seconds: 'sec',
   keys: 'keys',
-  expires: 'expiring keys',
-  avg_ttl: 'seconds',
+  expires: 'keys',
+  avg_ttl: 'sec',
   // calculated metrics
   used_memory_session: 'bytes',
   keyspace_hits_session: 'hits',
   keyspace_misses_session: 'misses', 
-  keyspace_hitratio_session: 'hits/total', // calc from above 2
+  keyspace_hitratio_session: 'hits/read', // calc from above 2
   total_net_input_bytes_session: 'bytes',
   total_net_output_bytes_session: 'bytes', 
   total_commands_processed_session: 'commands', 
   evicted_keys_session: 'keys',
   expired_keys_session: 'keys', 
-  rejected_connections_session: 'connections rejected', 
-  uptime_in_seconds_session: 'seconds'
+  rejected_connections_session: 'cxns', 
+  uptime_in_seconds_session: 'sec'
 };
 
 interface Units {

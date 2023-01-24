@@ -14,15 +14,6 @@
   gap: 20px;
 }
 
-.topRow {
-  display: flex;
-  flex-wrap: wrap;
-  align-self: baseline;
-  justify-content: flex-start;
-  gap: 10px;
-  width: min(90%, 1100px);
-}
-
 .graphWrapper {
   border: solid 1px #313641;
   border-radius: 10px;
@@ -51,6 +42,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 8px;
 }
 
 .addEndpoint {
