@@ -33,8 +33,6 @@ export default function Push({ data, metric, unit }: Props) {
 
   useEffect(() => {
     if (isActivated) {
-      console.log('is actived: ', isActivated);
-      console.log('current num: ', data[data.length - 1], 'input param: :', number);
       // if greater than, check if the last element of the array is greater than the user submitted number param
       if (dropDownValue === 'greaterThan' && number !== undefined) {
         if (data[data.length - 1] > number) showToastMessage();
@@ -55,7 +53,6 @@ export default function Push({ data, metric, unit }: Props) {
   return (
     <div className={styles.alertWrapper}>
       <div className={styles.alert}>
-        {/* create a button for the chart components */}
         <button
           className={styles.alertButton}
           onClick={() => {

@@ -24,6 +24,7 @@ interface DropDownProps {
   axisState: string;
 }
 
+// dropdown for customizable graphs
 export default function DropDown({
   setStateFn,
   axis,
@@ -44,11 +45,19 @@ export default function DropDown({
           MenuProps={MenuProps}
           sx={{ fontFamily: "'Montserrat', sans-serif" }}
         >
-          <MenuItem disabled value="" sx={{ fontFamily: "'Montserrat', sans-serif" }}>
+          <MenuItem
+            disabled
+            value=''
+            sx={{ fontFamily: "'Montserrat', sans-serif" }}
+          >
             <em>Select {axis}</em>
           </MenuItem>
           {options.map((option) => (
-            <MenuItem key={option} value={option} sx={{ fontFamily: "'Montserrat', sans-serif" }}>
+            <MenuItem
+              key={option}
+              value={option}
+              sx={{ fontFamily: "'Montserrat', sans-serif" }}
+            >
               {option}
             </MenuItem>
           ))}

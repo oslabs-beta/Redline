@@ -2,19 +2,18 @@ const db = require('../database/userModel.ts');
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 
-// add a user to the database if the user doesn't already exist
 export default async function createUser(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   try {
-    // check to see if the user exist
+    // check to see if the user exists in the database
     const {emailaddress} = req.body; 
     const getUserQuery = `SELECT * FROM users WHERE emailaddress = '${emailaddress}'`;
     const { rows } = await db.query(getUserQuery);
     const user = rows[0];
     
-    // if they don't add them to the user table in sql
+    // if they don't and they've logged in or created an account add them to the user table in sql
     if (!user) {
       const params = [emailaddress];
       const createUserQuery = `

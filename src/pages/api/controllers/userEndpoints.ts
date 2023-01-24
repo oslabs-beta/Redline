@@ -6,12 +6,12 @@ export default async function handler(
   res: NextApiResponse
 ) {
 
+  // grab the user id
   const { emailaddress } = req.query;
   const getUserQuery = `SELECT * FROM users WHERE emailaddress = '${emailaddress}'`;
   const { rows } = await db.query(getUserQuery);
   const user = rows[0];
   const user_id = user.id;
-  // grab the user id
 
   try {
     // grab the user endpoints in the table
@@ -48,7 +48,6 @@ export default async function handler(
       console.log('endpoint successfully deleted');
       return res.status(201).json(response.rows[0]);
     }
-    // console.log('in api call', newMetric);
   } catch (error) {
     return {
       log: `Error occured in getUserEndpoints middleware, ${error}`,
