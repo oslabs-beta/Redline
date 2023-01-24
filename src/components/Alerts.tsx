@@ -115,7 +115,6 @@ export default function Push({ data, metric, unit }: Props) {
           onDeactivate={onDeactivate}
           isActivated={isActivated}
           dropDownValue={dropDownValue}
-          number={number}
         />
       </div>
       <ToastContainer />
