@@ -24,6 +24,7 @@ import OrcastrationTestimonial from '../public/orcastration.png';
 import QeraunosTestimonial from '../public/qeraunos.png';
 import VSBranchTestimonial from '../public/vsbranch.png';
 import CloudbandTestimonial from '../public/cloudband.png';
+import Head from 'next/head'; 
 
 Chart.register(...registerables);
 
@@ -48,6 +49,7 @@ export default function Landing() {
 
   return (
     <div className={styles.landingPage}>
+      <Head><title>Redline</title></Head>
       <NavBar />
       <div className={styles.wrapper}>
         {/* header */}

@@ -23,7 +23,7 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
 
   const { user } = useUser();
 
-  // Get a logged-in users endpoints
+  // get a logged-in users endpoints
   async function getUserEndpoints() {
     try {
       if (user) {
@@ -37,6 +37,7 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
     }
   }
 
+  // if a user is logged in, get the endpoints from the database
   useEffect(() => {
     if (user) {
       let data = getUserEndpoints();
@@ -44,7 +45,7 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
     }
   }, [user]);
 
-  // Stores users who aren't logged ins endpoints.
+  // stores users who aren't logged-ins' endpoints in session storage
   function handleFormSubmit(event: any) {
     event.preventDefault();
     let repeat: boolean = false;
@@ -99,6 +100,7 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
     });
   }
 
+  // deletes endpoint from database/session storage
   function deleteEndpoint(endpoint: string) {
     if (user) {
       deleteUserEndpoint(user.name, endpoint);
@@ -122,7 +124,6 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
   }
 
   return (
-    // <div>
       <section className={styles.formContainer}>
         <form onSubmit={handleFormSubmit} id="addEndpointForm">
           <label>
@@ -175,11 +176,12 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
           </label>
           <br />
           <br />
+          <div className={styles.repeatWarning}>{repeatWarning}</div>
+          <br />
           <button className={styles.addEndpoint} type="submit" role="button">
             <GrAddCircle size={30} color={'313614'} />
           </button>
         </form>
-        <div className={styles.repeatWarning}>{repeatWarning}</div>
         <div className={styles.endpointWrapper}>
           <br />
           {endpoints.map((object, index) => {

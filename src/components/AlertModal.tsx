@@ -9,7 +9,6 @@ type Props = {
   isOpened: boolean;
   onConfirm: () => void;
   onClose: () => void;
-  // children: React.ReactNode;
   setDropDownValue: React.Dispatch<React.SetStateAction<string>>;
   setNumber: React.Dispatch<React.SetStateAction<number | undefined>>;
   unit: string;
@@ -25,7 +24,6 @@ export default function AlertModal({
   isOpened,
   onConfirm,
   onClose,
-  // children,
   setDropDownValue,
   setNumber,
   onDeactivate,
@@ -38,9 +36,8 @@ export default function AlertModal({
   // if isOpened is false, modal is closed and should return nothing
   if (!isOpened) return null;
 
-  // declare onClick handler function that confirms the alert notification and closes the modal
+  // onClick handler function that confirms the alert notification and closes the modal
   function confirmAndClose() {
-    // if DropDownValue is '' or number is not a number, display warning message
     if (dropDownValue === '') {
       setWarningMessage('Please select an option from the drop down menu.');
     } else {
@@ -48,7 +45,6 @@ export default function AlertModal({
       onConfirm();
       onClose();
     }
-    // add logic to set the state for Toast notification to activated
   }
 
   function deactivateAndClose() {

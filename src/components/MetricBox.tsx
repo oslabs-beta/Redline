@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Alerts from './Alerts';
-// import styles from './styles/Charts.module.scss';
 import styles from './styles/MetricBox.module.scss';
 import { Units } from '../../types/types';
 
