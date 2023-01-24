@@ -1,0 +1,19 @@
+.topRow {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  width: 100vw;
+  flex-wrap: wrap;
+  min-height: 130px;
+}
+
+.addBox {
+  outline: 0;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  background-color: transparent;
+  touch-action: manipulation;
+  height: fit-content;
+}

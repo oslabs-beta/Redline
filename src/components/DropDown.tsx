@@ -37,7 +37,7 @@ export default function DropDown({
   };
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 150 }}>
+      <FormControl sx={{ m: 0, width: 200, border: 'none' }}>
         <Select
           displayEmpty
           value={axisState ? axisState : ''}
