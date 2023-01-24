@@ -5,7 +5,6 @@ export default async function storeUserEndpoint(emailaddress: string|null|undefi
     try {
         const response = await axios.post(`api/controllers/userEndpoints?emailaddress=${emailaddress}`, {
           newEndpoint,
-        //   emailaddress: user,
         });
     } catch (error) {
       console.log(error);

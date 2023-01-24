@@ -3,8 +3,6 @@ import { Pie } from 'react-chartjs-2';
 import { Chart, ArcElement } from 'chart.js';
 import Alerts from './Alerts'; 
 import styles from './styles/Charts.module.scss';
-https://nextjs.org/docs/routing/introduction
-
 
 Chart.register(ArcElement);
 
@@ -17,7 +15,6 @@ interface pieProps {
 export default function PieGraph({pieData, name, labels }: pieProps): JSX.Element {
   const metric:string = name
   const unit:string = 'percent'
-  // loop through the data we recieve - we should get back an array of objects
   return (
     <div className={styles.graphWrapper}>
       <h2>{name}</h2>
@@ -25,7 +22,7 @@ export default function PieGraph({pieData, name, labels }: pieProps): JSX.Elemen
         className='pie'
         datasetIdKey='byType'
         data={{
-          labels: labels, //['memory used', 'memory remaining'],
+          labels: labels, 
           datasets: [
             {
               data: pieData,

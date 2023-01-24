@@ -6,8 +6,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method == 'GET') {
-    // console.log('in connect.ts')
-    disconnectRedis() // if successfully connected, return 200 status code
+    disconnectRedis();
     return res.status(200).send('Disconnected from Redis endpoint');
   }
 }

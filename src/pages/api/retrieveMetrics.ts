@@ -8,10 +8,8 @@ export default async function handler(
 ) {
     // Logic for specific charts
     if (req.method == 'GET') {
-      // adjust below
       const newMetric = await getMetrics();
-      // adjust return
-      // console.log('in api call', newMetric);
+
       return res.status(200).json(newMetric);
       try {
         const newMetric = await getMetrics();
