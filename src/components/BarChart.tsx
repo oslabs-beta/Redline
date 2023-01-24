@@ -5,17 +5,16 @@ import { isPropertySignature } from 'typescript';
 import Alerts from './Alerts'; 
 import styles from './styles/Charts.module.scss';
 
-
 interface barProps {
   barData: number[][];
   name: string;
   labels: string[];
 }
 
+// renders bar chart on landing page
 export default function BarChart({ barData, name, labels }: barProps) {
   const metric: string = 'Memory Usage';
   const unit: string = 'bytes';
-
   const options = {
     responsive: true,
     scales: {
@@ -42,16 +41,6 @@ export default function BarChart({ barData, name, labels }: barProps) {
         data: barData.map((arr) => arr[1]),
         backgroundColor: 'rgb(53, 162, 235)',
       },
-      // {
-      //   label: 'Dummy Data 1',
-      //   data: labels.map(() => Math.floor(Math.random() * 100)),
-      //   backgroundColor: 'rgb(255, 99, 132)',
-      // },
-      // {
-      //   label: 'Dummy Data 2',
-      //   data: labels.map(() => Math.floor(Math.random() * 100)),
-      //   backgroundColor: 'rgb(80, 150, 190)',
-      // },
     ],
   };
 

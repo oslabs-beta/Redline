@@ -5,19 +5,22 @@ import MetricContainer from './MetricContainer';
 import { MetricCollection, Endpoint } from '../../types/types';
 import NavBar from './NavBar';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import styles from './styles/Main.module.scss';
 
 export default function Main() {
-  // Declare state that we pass down to sidebar. Sidebar is where the user is entering the endpoints and where the declared state will be updated.
+  // declare state that we pass down to sidebar. sidebar is where the user is entering the endpoints and where the declared state will be updated.
   const [metricEndpoint, setMetricEndpoint] = useState<Endpoint>();
   const [connected, isConnected] = useState<Boolean>();
   const [metrics, setMetrics] = useState<MetricCollection[]>([]); //store array of metric object instances (that updates every X sec)
-  const [delay, setDelay] = useState(2000); // default interval is 2000ms
+  const [delay, setDelay] = useState(1000); // default interval is 2000ms
+  const [points, setPoints] = useState(10); // number of data points stored
 
-  const savedCallback = useRef(retrieveData); // use retrieveData fn thru useRef so it has access to updated metrics
+  const savedCallback = useRef(retrieveData); // use retrieveData fn through useRef so it has access to updated metrics
   savedCallback.current = retrieveData;
 
   const { user } = useUser();
 
+  // checks to see if the user that has signed in/created an account is already in the database
   async function checkUser() {
     try {
       if (user) {
@@ -36,7 +39,6 @@ export default function Main() {
 
   useEffect(() => {
     // setup data fetching interval
-    // console.log('datafetch', connected);
     if (connected) {
       // if connected, then set fetch interval
       let id = setInterval(() => {
@@ -44,23 +46,18 @@ export default function Main() {
       }, delay);
       return () => clearInterval(id);
     }
-    }, [connected, delay]); // when endpoint changes, clear previous interval and start new one
+  }, [connected, delay]); // when endpoint changes, clear previous interval and start new one
 
   async function retrieveData() {
     try {
       const response = await axios.get('/api/retrieveMetrics');
-      // console.log(response.data.used_memory);
       if (response.data !== '') {
-        if (metrics.length == 5) {
-          // setMetrics((metrics) => [...metrics.slice(-4), response.data]); //[{metrics1}, {metrics2}, {metrics3}]
-          setMetrics([...metrics.slice(-4), response.data]); //[{metrics1}, {metrics2}, {metrics3}]
+        if (metrics.length == points) {
+          setMetrics([...metrics.slice((1 - points)), response.data]); 
         } else {
-          // setMetrics((metrics) => [...metrics, response.data]);
           setMetrics([...metrics, response.data]);
         }
-        }
-      // console.log(metrics);
-      // return response.data;
+      }
     } catch (err) {
       console.log(err);
     }
@@ -70,9 +67,8 @@ export default function Main() {
     connectEndpoint(); // attempt to connect when endpoint is updated
 
     return () => {
-      if (connected) disconnectEndpoint();
-    }; // only if connected, disconnect from endpoint when endpoint is changed
-    // separate use effect for disconnecting? changed endpoint? or connected?
+      if (connected) disconnectEndpoint(); // only if connected, disconnect from endpoint when endpoint is changed
+    }; 
     async function connectEndpoint() {
       if (metricEndpoint) {
         // only attempt to connect if endpoint is set
@@ -83,12 +79,10 @@ export default function Main() {
             data: metricEndpoint, // uses current endpoint as body sent in request
           });
           console.log(response);
-
-          isConnected(true); // if no error, set current connected state to true       
+          isConnected(true); 
         } catch (err) {
-          console.log('Error:', err);
-          console.log('Could not connect to:', metricEndpoint.nickname);
-          isConnected(false); // error connecting, set state to false
+          console.log('Could not connect to: ', metricEndpoint.nickname, 'Error message: ', err);
+          isConnected(false); 
         }
       }
     }
@@ -99,7 +93,7 @@ export default function Main() {
         const response = await axios.get('/api/disconnect');
         if (response.status === 200) {
           // if successful disconnect, reset metrics array for new endpoint
-          setMetrics([]); // reset metrics array
+          setMetrics([]);
           console.log('Disconnected from:', metricEndpoint.nickname);
         } else {
           console.log(response.status);
@@ -109,12 +103,9 @@ export default function Main() {
   }, [metricEndpoint]);
 
   return (
-    <div className='bodyContainer'>
-      {/* <button onClick={}>GET LATENCY</button> */}
-      {/* <button onClick={ () => setMetricEndpoint({'host': '127.0.0.1', 'port': 6379, 'password': '', 'nickname': 'nickname'}) }>CONNECT TO local</button>
-      <button onClick={ () => setMetricEndpoint({'host': 'redis-12203.c289.us-west-1-2.ec2.cloud.redislabs.com', 'port': 12202, 'password': 'GzxNr6qE7kXSHH2boTMycxZQXo9wicSE', 'nickname': 'NA-free-db'}) }>CONNECT TO NA-free-db</button> */}
+    <div className={styles.bodyContainer}>
       <NavBar />
-      <div className='mainContainer'>
+      <div className={styles.mainContainer}>
         <Sidebar setMetricEndpoint={setMetricEndpoint} />
         <MetricContainer metrics={metrics} />
       </div>

@@ -12,6 +12,7 @@ interface scatterProps {
   metrics: MetricCollection[];
 }
 
+// customizable line graph 
 export default function DynamicLineGraph({
   metrics,
 }: scatterProps): JSX.Element {
@@ -54,18 +55,11 @@ export default function DynamicLineGraph({
     labels: labels,
     datasets: [
       {
-        label: 'hello',
         data: lineData,
         borderColor: 'black',
         borderWidth: 1,
       },
     ],
-  };
-
-  const style = {
-    display: 'flex',
-    justify_content: 'center',
-    align_items: 'center',
   };
 
   return (
@@ -86,7 +80,7 @@ export default function DynamicLineGraph({
               title: { display: true, text: 'Elapsed time (seconds)' },
             },
             y: {
-              title: { display: true, text: Units[stateY]},
+              title: { display: true, text: Units[stateY] },
               beginAtZero: true,
             },
           },

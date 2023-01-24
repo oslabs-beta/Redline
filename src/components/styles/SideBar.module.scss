@@ -1,68 +1,74 @@
 .formContainer {
-    // margin-top: 90px;
-    // margin-right: 120px;
-    font-family: 'DM Serif Display', serif;
-    font-size: 20px;
-    color:  #313641; 
-    border-style: solid;
-    border-width: 1px;
-    border-color: #313641;
-    border-radius: 10px;
-    padding: 10px;
-    // margin: 10px;
-    display: inline-block;
-    text-align: center;
-    width: 180px;
-    height: fit-content;
-    justify-content: center;
-    border: solid 1px #313641;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-  }
-  
-  #plusSign {
-    width: 25px;
-    height: auto;
-  }
-  
-  .delete {
-    outline: 0;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    background-color: transparent;
-    touch-action: manipulation;
-  }
-  
-  .addEndpoint {
-    outline: 0;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    background-color: transparent;
-    touch-action: manipulation;
-  }
-  
-  .eachEndpoint {
-    font-family: 'DM Serif Display', serif;
-    color:  #313614;
-    font-size: 20px;
-    outline: 0;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    background-color: transparent;
-    touch-action: manipulation;
-  }
-  
-  .endPointContainer {
-    vertical-align: baseline;
-  }
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  color: #313641;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #313641;
+  border-radius: 10px;
+  padding: 10px;
+  display: inline-block;
+  text-align: center;
+  width: 180px;
+  height: fit-content;
+  justify-content: center;
+  border: solid 1px #313641;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
 
-  .input {
-    font-family: 'DM Serif Display', serif;
-    height: 20px;
-    border-radius: 8px;
-    border: 1.5px solid #313641;
-    padding: 4px 8px 4px 8px;
-  }
+#plusSign {
+  width: 25px;
+  height: auto;
+}
+
+.delete {
+  outline: 0;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  background-color: transparent;
+  touch-action: manipulation;
+  align-self: baseline;
+}
+
+.addEndpoint {
+  outline: 0;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  background-color: transparent;
+  touch-action: manipulation;
+}
+
+.eachEndpoint {
+  font-family: 'DM Serif Display', serif;
+  color: #313614;
+  font-size: 20px;
+  outline: 0;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  background-color: transparent;
+  touch-action: manipulation;
+  overflow-wrap: anywhere;
+}
+
+.endPointContainer {
+  display: flex;
+}
+
+.repeatWarning {
+  font-family: 'Montserrat', sans-serif;
+  color: #d55641;
+  font-size: 10px;
+  font-style: italic;
+}
+
+.input {
+  font-family: 'DM Serif Display', serif;
+  height: 20px;
+  border-radius: 8px;
+  border: 1.5px solid #313641;
+  padding: 4px 8px 4px 8px;
+}

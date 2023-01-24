@@ -3,9 +3,7 @@ import { CategoryScale, Chart, registerables } from 'chart.js';
 import { setLabels } from 'react-chartjs-2/dist/utils';
 import { Line, Scatter } from 'react-chartjs-2';
 import { Units, MetricCollection, Metrics } from '../../types/types';
-import Alerts from './Alerts'; 
 import DropDown from './DropDown';
-// import stylesScatter from './ScatterChart.module.scss'
 import styles from './styles/Charts.module.scss';
 
 
@@ -26,9 +24,7 @@ export default function ScatterChart({ metrics }: scatterProps): JSX.Element {
   const [scatterData, setScatterData] = useState<scatterPoint[]>([]);
   
   const labels: number[] = [];
-  // hard codes to be replaced with dynamic logic/info from user
-  // replace the hard coded 'bytes' below with the types from types.ts file based on the x / y axis labels
-  const unit:string = 'bytes'
+  const unit: string = 'bytes'
 
   let tempArr = [];
   for(let i = 0; i < metrics.length; i++) {
@@ -41,9 +37,7 @@ export default function ScatterChart({ metrics }: scatterProps): JSX.Element {
   }
 
   useEffect(() => {
-    if(stateX && stateY) { // check if both are set
-      // create array of {x: x, y: y} objects here
-      // console.log('in useeffect scatter',scatterData)
+    if(stateX && stateY) {
       let tempArr = [];
       for(let i = 0; i < metrics.length; i++) {
         if(stateX !== '' && stateY !== '') {
@@ -56,13 +50,13 @@ export default function ScatterChart({ metrics }: scatterProps): JSX.Element {
       setScatterData(tempArr);
       console.log(tempArr)
     }
-  }, [stateX, stateY, metrics]) // metrics as depen as well?
+  }, [stateX, stateY, metrics])
 
   let data = {
     datasets: [
       {
         label: 'hello',
-        data: scatterData, // [array of {x: 10, y: 10}]
+        data: scatterData, 
         borderColor: 'black',
         borderWidth: 1,
       },
@@ -90,12 +84,10 @@ export default function ScatterChart({ metrics }: scatterProps): JSX.Element {
         <h2>vs</h2>
         <DropDown axisState={stateX} setStateFn={setStateX} axis={'X'}/>        
       </div>
-
       <Scatter
         data={ data }
         options={ options }
       />
-      {/* <Alerts data={scatterData} metric={'temp'} unit={unit}/> */}
     </div>
   );
 }

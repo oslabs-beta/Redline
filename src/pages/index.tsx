@@ -24,6 +24,7 @@ import OrcastrationTestimonial from '../public/orcastration.png';
 import QeraunosTestimonial from '../public/qeraunos.png';
 import VSBranchTestimonial from '../public/vsbranch.png';
 import CloudbandTestimonial from '../public/cloudband.png';
+import Head from 'next/head'; 
 
 Chart.register(...registerables);
 
@@ -47,32 +48,38 @@ export default function Landing() {
   }, []);
 
   return (
-    <div>
+    <div className={styles.landingPage}>
+      <Head><title>Redline</title></Head>
       <NavBar />
       <div className={styles.wrapper}>
         {/* header */}
-        <div className={styles.header}>
-          Redis Performance Monitoring with <span style={{color: '#d55641'}}>Redline</span>.
-          <Link href='/api/auth/login'>
-            {user ? (
-              <Link href='/monitoring'>
-                <button id={styles.button}>GO TO DASHBOARD</button>
-              </Link>
-            ) : (
-              <button id={styles.button}>GET STARTED</button>
-            )}
-          </Link>
+        <div className={styles.headerChart}>
+          <div className={styles.header}>
+            <div className={styles.headerHeading}>
+            Redis Performance Monitoring with{' '}
+            <span style={{ color: '#d55641' }}>Redline</span>.
+            </div>
+            <Link href="/api/auth/login">
+              {user ? (
+                <Link href="/monitoring">
+                  <button id={styles.button}>GO TO DASHBOARD</button>
+                </Link>
+              ) : (
+                <button id={styles.button}>GET STARTED</button>
+              )}
+            </Link>
+          </div>
+
+          {/* chart */}
+          <div className={styles.chart}>
+            <BarChart
+              barData={dummyData}
+              name="Memory Usage"
+              labels={['Memory Used', 'Memory Available']}
+            />
+          </div>
         </div>
 
-        {/* chart */}
-        <div className={styles.chart}>
-          <BarChart
-            barData={dummyData}
-            name='Memory Usage'
-            labels={['Memory Used', 'Memory Available']}
-          />
-        </div>
-        
         {/* caption */}
         <div className={styles.caption}>
           Redline is a powerful Redis performance metrics visualizer that’s easy
@@ -86,87 +93,156 @@ export default function Landing() {
           <div className={styles.feature}>
             <VscGraphLine size={30} />
             <h1>Core Redis Metrics</h1>
-            <p>Visualize key performance metrics to improve the efficiency of your Redis instance and diagnose performance issues.</p>
+            <p>
+              Visualize key performance metrics to improve the efficiency of
+              your Redis instance and diagnose performance issues.
+            </p>
           </div>
 
           <div className={styles.feature}>
             <BsFillBellFill size={30} />
             <h1>Alerts </h1>
-            <p>Developers can also set up alerts for individual metrics to notify them whenever a metric either dips below or exceeds a specified value. </p>
+            <p>
+              Developers can also set up alerts for individual metrics to notify
+              them whenever a metric either dips below or exceeds a specified
+              value.{' '}
+            </p>
           </div>
 
           <div className={styles.feature}>
             <TbReportAnalytics size={30} />
             <h1>Persisting Data</h1>
-            <p>If a developer sets up a user account with Redline, their Redis cache endpoints will persist whenever they open or close the website.</p>
+            <p>
+              If a developer sets up a user account with Redline, their Redis
+              cache endpoints will persist whenever they open or close the
+              website.
+            </p>
           </div>
         </div>
-                {/* testimonials */}
-        <Marquee >
-          <Image src={QeraunosTestimonial} alt=''className={styles.testimonial}/>
-          <Image src={DocketeerTestimonial} alt=''className={styles.testimonial}/>
-          <Image src={DenogresTestimonial} alt=''className={styles.testimonial}/>
-          <Image src={OrcastrationTestimonial} alt=''className={styles.testimonial}/>
-          <Image src={VSBranchTestimonial} alt=''className={styles.testimonial}/>
-          <Image src={CloudbandTestimonial} alt=''className={styles.testimonial}/>
-          <Image src={DockwellTestimonial} alt=''className={styles.testimonial}/>
+        {/* testimonials */}
+        <Marquee style={{'width': '90%', 'height': '260px'}}
+        >
+          <Image
+            src={QeraunosTestimonial}
+            alt=""
+            className={styles.testimonial}
+          />
+          <Image
+            src={DocketeerTestimonial}
+            alt=""
+            className={styles.testimonial}
+          />
+          <Image
+            src={DenogresTestimonial}
+            alt=""
+            className={styles.testimonial}
+          />
+          <Image
+            src={OrcastrationTestimonial}
+            alt=""
+            className={styles.testimonial}
+          />
+          <Image
+            src={VSBranchTestimonial}
+            alt=""
+            className={styles.testimonial}
+          />
+          <Image
+            src={CloudbandTestimonial}
+            alt=""
+            className={styles.testimonial}
+          />
+          <Image
+            src={DockwellTestimonial}
+            alt=""
+            className={styles.testimonial}
+          />
         </Marquee>
 
         <div className={styles.team}>
           <div className={styles.person}>
-
-            <Image className={styles.teamPhoto} src={Luke} alt='Luke' />
-            <h2>LUKE DRISCOLL</h2> 
-            <p>software engineer</p>   
-            <Link href = 'https://github.com/LukeDriscoll4'>
-            <Image className={styles.logo} alt='githubLogo' src={githubLogo}></Image>  
+            <Image className={styles.teamPhoto} src={Luke} alt="Luke" />
+            <h2>LUKE DRISCOLL</h2>
+            <p>software engineer</p>
+            <Link href="https://github.com/LukeDriscoll4">
+              <Image
+                className={styles.logo}
+                alt="githubLogo"
+                src={githubLogo}
+              ></Image>
             </Link>
 
-            <Link href = 'https://www.linkedin.com/in/luke-driscoll/'>
-            <Image className={styles.logo} alt='linkedinLogo' src={linkedinLogo}></Image>   
-            </Link> 
-            </div>
-
-          <div className={styles.person}>
-        
-            <Image className={styles.teamPhoto} src={Elvin} alt='Elvin' />
-            <h2>ELVIN YUEN</h2>  
-            <p>software engineer</p>  
-            <Link href = 'https://github.com/elvinyuen'>
-            <Image className={styles.logo} alt='githubLogo' src={githubLogo}></Image>  
-            </Link>
-            <Link href = 'https://www.linkedin.com/in/elvinyuen/'>
-            <Image className={styles.logo} alt='linkedinLogo' src={linkedinLogo}></Image>    
+            <Link href="https://www.linkedin.com/in/luke-driscoll/">
+              <Image
+                className={styles.logo}
+                alt="linkedinLogo"
+                src={linkedinLogo}
+              ></Image>
             </Link>
           </div>
 
           <div className={styles.person}>
-            <Image className={styles.teamPhoto} src={Alan} alt='Alan' />
-            <h2>ALAN PERNG</h2> 
-            <p>software engineer</p> 
-            <Link href = 'https://github.com/aperng31'>
-            <Image className={styles.logo} alt='githubLogo' src={githubLogo}></Image>  
+            <Image className={styles.teamPhoto} src={Elvin} alt="Elvin" />
+            <h2>ELVIN YUEN</h2>
+            <p>software engineer</p>
+            <Link href="https://github.com/elvinyuen">
+              <Image
+                className={styles.logo}
+                alt="githubLogo"
+                src={githubLogo}
+              ></Image>
             </Link>
-            <Link href = 'https://www.linkedin.com/in/alanperng/'>
-            <Image className={styles.logo} alt='linkedinLogo' src={linkedinLogo}></Image>    
-            </Link> 
+            <Link href="https://www.linkedin.com/in/elvinyuen/">
+              <Image
+                className={styles.logo}
+                alt="linkedinLogo"
+                src={linkedinLogo}
+              ></Image>
+            </Link>
           </div>
 
           <div className={styles.person}>
-            <Image className={styles.teamPhoto} src={Sakura} alt='Sakura' />
-            <h2>SAKURA AKIYAMA</h2>  
-            <p>software engineer</p>  
-            <Link href = 'https://github.com/sakurakiyama'>
-            <Image className={styles.logo} alt='githubLogo' src={githubLogo}></Image>  
+            <Image className={styles.teamPhoto} src={Alan} alt="Alan" />
+            <h2>ALAN PERNG</h2>
+            <p>software engineer</p>
+            <Link href="https://github.com/aperng31">
+              <Image
+                className={styles.logo}
+                alt="githubLogo"
+                src={githubLogo}
+              ></Image>
             </Link>
-            <Link href = 'https://www.linkedin.com/in/sakura-akiyama-bowden/'>
-            <Image className={styles.logo} alt='linkedinLogo' src={linkedinLogo}></Image>    
+            <Link href="https://www.linkedin.com/in/alanperng/">
+              <Image
+                className={styles.logo}
+                alt="linkedinLogo"
+                src={linkedinLogo}
+              ></Image>
             </Link>
           </div>
-    </div>
-    </div>
 
+          <div className={styles.person}>
+            <Image className={styles.teamPhoto} src={Sakura} alt="Sakura" />
+            <h2>SAKURA AKIYAMA</h2>
+            <p>software engineer</p>
+            <Link href="https://github.com/sakurakiyama">
+              <Image
+                className={styles.logo}
+                alt="githubLogo"
+                src={githubLogo}
+              ></Image>
+            </Link>
+            <Link href="https://www.linkedin.com/in/sakura-akiyama-bowden/">
+              <Image
+                className={styles.logo}
+                alt="linkedinLogo"
+                src={linkedinLogo}
+              ></Image>
+            </Link>
+          </div>
+        </div>
       </div>
+    </div>
   );
 }
 
