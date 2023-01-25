@@ -17,15 +17,14 @@
   .modal {
     border-radius: 10px;
     width: 500px;
-    height: 220px;
+    height: fit-content;
     text-align: center;
     background-color: white;
     z-index: 20;
     position: fixed;
-    margin-left: -250px;
-    margin-top: -90px;
     left: 50%;
     top: 50%;
+    transform: translate(-50%, -50%);
     border: 1px solid #ccc;
 
     h3 {

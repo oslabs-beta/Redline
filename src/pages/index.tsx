@@ -94,28 +94,24 @@ export default function Landing() {
             <VscGraphLine size={30} />
             <h1>Core Redis Metrics</h1>
             <p>
-              Visualize key performance metrics to improve the efficiency of
-              your Redis instance and diagnose performance issues.
+              With Redline, developers can visualize any performance metrics in real-time to diagnose performance issues and improve efficiency of their Redis instances.
             </p>
           </div>
 
           <div className={styles.feature}>
             <BsFillBellFill size={30} />
-            <h1>Alerts </h1>
+            <h1>Alerts</h1>
             <p>
-              Developers can also set up alerts for individual metrics to notify
-              them whenever a metric either dips below or exceeds a specified
-              value.{' '}
+              Our intuitive alert system notifies developers when their Redis instances perform outside of specified metric thresholds - allowing developers to spend less time monitoring.
             </p>
+            <br/>
           </div>
 
           <div className={styles.feature}>
             <TbReportAnalytics size={30} />
-            <h1>Persisting Data</h1>
+            <h1>Manage Endpoints</h1>
             <p>
-              If a developer sets up a user account with Redline, their Redis
-              cache endpoints will persist whenever they open or close the
-              website.
+               Upon signing up, developers can quickly save cache endpoints and jump back in to where they left off.
             </p>
           </div>
         </div>
@@ -245,21 +241,3 @@ export default function Landing() {
     </div>
   );
 }
-
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-//   const { user } = useUser();
-
-//   return { props: {'hello': 'world'} }
-// }
-
-// export const getServerSidePropsResultWithSession: GetServerSidePropsResult = () => {
-
-// }
-
-// export const getServerSideProps: GetServerSideProps = ({
-//   async getServerSideProps(context) {
-//     const session = getSession(context.req, context.res);
-//     console.log(session);
-//     return { props: { session } }
-//   }
-// })

@@ -79,6 +79,10 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
       JSON.stringify([...previousEndpoints, newEndpoint])
     );
     sessionStorage.setItem(nickname, JSON.stringify(newEndpoint));
+    event.target[0].value = ''; 
+    event.target[1].value = ''; 
+    event.target[2].value = ''; 
+    event.target[3].value = ''; 
   }
 
   // this ensures that the endpoints in state don't get rewritten
