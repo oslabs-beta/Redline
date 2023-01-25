@@ -107,7 +107,7 @@ export default function Main() {
       <NavBar />
       <div className={styles.mainContainer}>
         <Sidebar setMetricEndpoint={setMetricEndpoint} />
-        <MetricContainer metrics={metrics} />
+        <MetricContainer metrics={metrics} />          
       </div>
     </div>
   );

@@ -2,9 +2,6 @@
   font-family: 'DM Serif Display', serif;
   font-size: 20px;
   color: #313641;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #313641;
   border-radius: 10px;
   padding: 10px;
   display: inline-block;
@@ -12,8 +9,7 @@
   width: 180px;
   height: fit-content;
   justify-content: center;
-  border: solid 1px #313641;
-  border-radius: 10px;
+  border: 1px solid #313641;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 

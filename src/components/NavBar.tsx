@@ -34,7 +34,7 @@ export default function NavBar() {
       <Image className={styles.icons}  src={Github} alt='Github Button'/>
       </Link>
 
-      <Link href = '/blog'>
+      <Link href = 'https://medium.com/@redline.metricalerts/redline-simplified-redis-performance-management-d78319196af6'>
       <Image className={styles.icons} src={Blog} alt='Blog Button'/>
       </Link>
 

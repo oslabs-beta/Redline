@@ -124,7 +124,7 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
   }
 
   return (
-      <section className={styles.formContainer}>
+      <div className={styles.formContainer}>
         <form onSubmit={handleFormSubmit} id="addEndpointForm">
           <label>
             Host
@@ -214,6 +214,6 @@ export default function Sidebar({ setMetricEndpoint }: SidebarProps) {
             );
           })}
         </div>
-      </section>
+      </div>
   );
 }
