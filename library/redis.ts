@@ -86,21 +86,3 @@ const calcSessionMetrics = (data: Metrics) => { // calculate current session met
     }
   }
 }
-
-// export const getLatency = async () => {
-//   if(redis) {
-//     try {
-//       // const help = await redis.call('HELP')
-//       // console.log(help);
-//       // const doctor = await redis.call('--latency');
-//       // console.log(doctor);
-//       // redis.config('SET', 'latency-monitor-threshold', '5');
-//       const flush = await redis.call('SET', 'latency-monitor-threshold', '5');
-//       console.log(flush);
-//       const latencyData = await redis.latency('DOCTOR');
-//       return latencyData;
-//     } catch (err) {
-//       console.log(err)
-//     }
-//   }
-// }

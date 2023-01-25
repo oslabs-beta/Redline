@@ -1,10 +1,13 @@
 
 .graphWrapper {
-  // flex-grow: 1;
-  width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  gap: 6px;
   border: solid 1px #313641;
   border-radius: 10px;
-  padding: 6px;
+  padding: 8px;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 
   h2 {
@@ -18,5 +21,22 @@
     font-family: 'DM Serif Display', serif;
     text-align: center;
     font-size: 20px;
+    height: 24px;
+    margin: 0;
   }
+}
+
+.buttonDiv {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.addEndpoint {
+  outline: 0;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  background-color: transparent;
+  touch-action: manipulation;
 }

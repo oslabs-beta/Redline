@@ -12,7 +12,8 @@ export default function Main() {
   const [metricEndpoint, setMetricEndpoint] = useState<Endpoint>();
   const [connected, isConnected] = useState<Boolean>();
   const [metrics, setMetrics] = useState<MetricCollection[]>([]); //store array of metric object instances (that updates every X sec)
-  const [delay, setDelay] = useState(2000); // default interval is 2000ms
+  const [delay, setDelay] = useState(1000); // default interval is 2000ms
+  const [points, setPoints] = useState(10); // number of data points stored
 
   const savedCallback = useRef(retrieveData); // use retrieveData fn through useRef so it has access to updated metrics
   savedCallback.current = retrieveData;
@@ -51,8 +52,8 @@ export default function Main() {
     try {
       const response = await axios.get('/api/retrieveMetrics');
       if (response.data !== '') {
-        if (metrics.length == 5) {
-          setMetrics([...metrics.slice(-4), response.data]); 
+        if (metrics.length == points) {
+          setMetrics([...metrics.slice((1 - points)), response.data]); 
         } else {
           setMetrics([...metrics, response.data]);
         }
@@ -106,7 +107,7 @@ export default function Main() {
       <NavBar />
       <div className={styles.mainContainer}>
         <Sidebar setMetricEndpoint={setMetricEndpoint} />
-        <MetricContainer metrics={metrics} />
+        <MetricContainer metrics={metrics} />          
       </div>
     </div>
   );
