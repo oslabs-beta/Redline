@@ -6,6 +6,7 @@ import Logout from '../public/logout.png';
 import Login from '../public/login.png';
 import Github from '../public/github.png'; 
 import Monitoring from '../public/monitoring.png';
+import Blog from '../public/blog.png';
 import {useUser} from '@auth0/nextjs-auth0/client';
 import styles from './styles/NavBar.module.scss'
 
@@ -31,6 +32,10 @@ export default function NavBar() {
     
       <Link href = 'https://github.com/oslabs-beta/Redline'>
       <Image className={styles.icons}  src={Github} alt='Github Button'/>
+      </Link>
+
+      <Link href = '/blog'>
+      <Image className={styles.icons} src={Blog} alt='Blog Button'/>
       </Link>
 
       <Link href = '/monitoring'>
