@@ -57,7 +57,7 @@ There are two ways to use the application for development purposes. The first me
 
 Or, simply pull the image from Docker:
 
-1. Navigate to [Docker Hub](https://hub.docker.com/r/sakurakiyama/redline) and pull the image using the command docker pull sakurakiyama/redline
+1. Navigate to [Docker Hub](https://hub.docker.com/r/sakurakiyama/redline) and pull the image using the command ```docker pull sakurakiyama/redline```
 2. Run ```docker run -dp 3001:3000 sakurakiyama/redline``` in your terminal
 3. Navigate to [localhost:3001](http://localhost:3001). You should see the web application and enter your host, port, password (default is empty) and nickname.
 
