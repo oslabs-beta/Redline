@@ -50,16 +50,17 @@ Click the alert icon at the bottom of the chart you’d like to monitor, and ent
 
 There are two ways to use the application for development purposes. The first method:
 
-First, clone the repository from Github .
-Run docker build -t redline . in your terminal
-Run docker run -p [open port ex 3000]:3000 redline in your terminal
-Navigate to localhost:[port]. You should see the web application and enter your host, port, password (default is empty) and nickname.
+1. First, clone the repository from Github .
+2. Run ```docker build -t redline .``` in your terminal
+3. Run ```docker run -p [open port ex 3000]:3000 redline``` in your terminal
+4. Navigate to localhost:[port]. You should see the web application and enter your host, port, password (default is empty) and nickname.
+
 Or, simply pull the image from Docker:
 
-Navigate to Docker Hub and pull the image using the command docker pull sakurakiyama/redline
-Run docker run -p [open port ex 3000]:3000 sakurakiyama/redline in your terminal
-Navigate to localhost:[port]. You should see the web application and enter your host, port, password (default is empty) and nickname.
-If you’re having any trouble connecting your Redis instance, please refer to the images above for reference.
+1. Navigate to [Docker Hub](https://hub.docker.com/r/sakurakiyama/redline) and pull the image using the command docker pull sakurakiyama/redline
+2. Run ```docker run -p [open port ex 3000]:3000 sakurakiyama/redline``` in your terminal
+3. Navigate to localhost:[port]. You should see the web application and enter your host, port, password (default is empty) and nickname.
+4. If you’re having any trouble connecting your Redis instance, please refer to the images above for reference.
 
 ## Tech Stack
 
