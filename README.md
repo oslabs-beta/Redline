@@ -26,7 +26,7 @@ Redline is an open-source tool that displays vital metrics for Redis instances. 
 
 ## Getting Started
 
-## How do you use Redline for applications in production?
+### How do you use Redline for applications in production?
 
 Navigate to [Redline](https://redlinemetrics.com) and set up a user account or click straight through to our monitoring tool. _Users who opt to sign up using Auth0 are able to save their Redis instances_.
 
@@ -65,7 +65,7 @@ If you’re having any trouble connecting your Redis instance, please refer to t
 
 Next.js | Typescript | React.js | PostgreSQL | Auth0 | Chart.js | SASS/CSS | Jest | Docker
 
-## How to Contribute
+### How to Contribute
 
 1. Clone the repo and make a new branch
 2. Run ```docker build -t redline .``` in your terminal
