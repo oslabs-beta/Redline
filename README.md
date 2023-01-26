@@ -60,7 +60,8 @@ Or, simply pull the image from Docker:
 1. Navigate to [Docker Hub](https://hub.docker.com/r/sakurakiyama/redline) and pull the image using the command docker pull sakurakiyama/redline
 2. Run ```docker run -dp 3001:3000 sakurakiyama/redline``` in your terminal
 3. Navigate to [localhost:3001](http://localhost:3001). You should see the web application and enter your host, port, password (default is empty) and nickname.
-4. If you’re having any trouble connecting your Redis instance, please refer to the images above for reference.
+
+*If you're having any trouble, please refer to the images in the section above.*
 
 ## Tech Stack
 
