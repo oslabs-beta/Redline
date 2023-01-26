@@ -46,7 +46,7 @@ Click the alert icon at the bottom of the chart you’d like to monitor, and ent
 
 <img width='600' height='auto' src='https://i.imgur.com/ti69qJ0.gif' alt='alert gif'>
 
-## How do you use Redline for applications in development?
+### How do you use Redline for applications in development?
 
 There are two ways to use the application for development purposes. The first method:
 
@@ -65,7 +65,7 @@ If you’re having any trouble connecting your Redis instance, please refer to t
 
 Next.js | Typescript | React.js | PostgreSQL | Auth0 | Chart.js | SASS/CSS | Jest | Docker
 
-### How to Contribute
+## How to Contribute
 
 1. Clone the repo and make a new branch
 2. Run ```docker build -t redline .``` in your terminal
