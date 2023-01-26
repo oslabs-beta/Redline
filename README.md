@@ -52,14 +52,14 @@ There are two ways to use the application for development purposes. The first me
 
 1. First, clone the repository from Github .
 2. Run ```docker build -t redline .``` in your terminal
-3. Run ```docker run -p [open port ex 3000]:3000 redline``` in your terminal
-4. Navigate to localhost:[port]. You should see the web application and enter your host, port, password (default is empty) and nickname.
+3. Run ```docker run -dp 3001:3000 redline``` in your terminal
+4. Navigate to [LocalHost:3001](http://localhost:3001). You should see the web application and enter your host, port, password (default is empty) and nickname.
 
 Or, simply pull the image from Docker:
 
 1. Navigate to [Docker Hub](https://hub.docker.com/r/sakurakiyama/redline) and pull the image using the command docker pull sakurakiyama/redline
-2. Run ```docker run -p [open port ex 3000]:3000 sakurakiyama/redline``` in your terminal
-3. Navigate to localhost:[port]. You should see the web application and enter your host, port, password (default is empty) and nickname.
+2. Run ```docker run -dp 3001:3000 sakurakiyama/redline``` in your terminal
+3. Navigate to [LocalHost:3001](http://localhost:3001). You should see the web application and enter your host, port, password (default is empty) and nickname.
 4. If you’re having any trouble connecting your Redis instance, please refer to the images above for reference.
 
 ## Tech Stack
@@ -70,7 +70,7 @@ Next.js | Typescript | React.js | PostgreSQL | Auth0 | Chart.js | SASS/CSS | Jes
 
 1. Clone the repo and make a new branch
 2. Run ```docker build -t redline .``` in your terminal
-3. Run ```docker run -dp 3000:3000 redline``` in your terminal
+3. Run ```docker run -dp 3001:3000 redline``` in your terminal
 4. Add a feature, fix a big or refactor some code
 5. Write/update tests for the changes you made, if necessary
 6. Run unit tests and make sure all tests pass: npm test
