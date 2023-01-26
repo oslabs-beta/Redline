@@ -26,6 +26,8 @@ Redline is an open-source tool that displays vital metrics for Redis instances. 
 
 ## Getting Started
 
+## How do you use Redline for applications in production?
+
 Navigate to [Redline](https://redlinemetrics.com) and set up a user account or click straight through to our monitoring tool. _Users who opt to sign up using Auth0 are able to save their Redis instances_.
 
 <img width='600' height='auto' src='https://i.imgur.com/ECMcTXz.gif' alt='getting started'>
@@ -43,6 +45,21 @@ Redline will spin up the graphs for the performance metrics associated with the 
 Click the alert icon at the bottom of the chart you’d like to monitor, and enter the threshold value that will trigger the alert.
 
 <img width='600' height='auto' src='https://i.imgur.com/ti69qJ0.gif' alt='alert gif'>
+
+## How do you use Redline for applications in development?
+
+There are two ways to use the application for development purposes. The first method:
+
+First, clone the repository from Github .
+Run docker build -t redline . in your terminal
+Run docker run -p [open port ex 3000]:3000 redline in your terminal
+Navigate to localhost:[port]. You should see the web application and enter your host, port, password (default is empty) and nickname.
+Or, simply pull the image from Docker:
+
+Navigate to Docker Hub and pull the image using the command docker pull sakurakiyama/redline
+Run docker run -p [open port ex 3000]:3000 sakurakiyama/redline in your terminal
+Navigate to localhost:[port]. You should see the web application and enter your host, port, password (default is empty) and nickname.
+If you’re having any trouble connecting your Redis instance, please refer to the images above for reference.
 
 ## Tech Stack
 
