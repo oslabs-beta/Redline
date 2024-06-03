@@ -20,7 +20,7 @@ const options = Object.keys(Units);
 
 interface DropDownProps {
   setStateFn: React.Dispatch<React.SetStateAction<string>>;
-  axis: string;
+  category: string;
   axisState: string;
 }
 

@@ -6,10 +6,10 @@ import AlertModal from './AlertModal';
 import styles from './styles/Modal.module.scss';
 
 type Props = {
-  data: number[] | number[][];
+  data: number[];
   metric: string;
   unit: string;
-  selectedMetric: string;
+  selectedMetric?: string;
 };
 export default function Push({ data, metric, unit, selectedMetric }: Props) {
   // declare opened/close state, initialized to false to hide modal on default
@@ -84,7 +84,9 @@ export default function Push({ data, metric, unit, selectedMetric }: Props) {
   };
 
   let deactivateMessage = dropDownValue
-    ? `Active alert: ${humanMetric ? humanMetric : formattedSelectedMetric} to ${
+    ? `Active alert: ${
+        humanMetric ? humanMetric : formattedSelectedMetric
+      } to ${
         dropDownValue === 'greaterThan' ? 'exceed' : 'fall below'
       } ${number} ${unit}.`
     : `No active alert.`;
