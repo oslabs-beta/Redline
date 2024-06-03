@@ -38,18 +38,11 @@ export default function DynamicLineGraph({
       let tempArr = [];
       let title = '';
       let unit = '';
-      console.log('inside effect true statement');
-      console.log('stateY inside useEffect: ', stateY);
-      console.log('metrics is: ', metrics)
       for (let i = 0; i < metrics.length; i++) {
-        console.log('metrics[i] is: ', metrics[i]);
         if (stateY !== '') {
           tempArr.push(metrics[i][stateY]);
           title = stateY;
           unit = Units[stateY];
-          console.log('tempArr inside useEffect: ', tempArr);
-          console.log('title inside useEffect: ', title);
-          console.log('unit inside useEffect: ', unit);
         }
       }
       setLineData(tempArr);
@@ -68,8 +61,6 @@ export default function DynamicLineGraph({
       },
     ],
   };
-
-  console.log('stateY is: ', stateY);
 
   return (
     <div className={styles.graphWrapper}>

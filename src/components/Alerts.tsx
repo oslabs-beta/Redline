@@ -6,7 +6,7 @@ import AlertModal from './AlertModal';
 import styles from './styles/Modal.module.scss';
 
 type Props = {
-  data: number[];
+  data: number[] | number[][];
   metric: string;
   unit: string;
   selectedMetric?: string;
@@ -18,6 +18,18 @@ export default function Push({ data, metric, unit, selectedMetric }: Props) {
   const [dropDownValue, setDropDownValue] = useState('lessThan');
   const [number, setNumber] = useState<number | undefined>(0);
   const [bellColor, setBellColor] = useState('313641');
+
+  const getLastValue = (data: number[] | number[][]): number | undefined => {
+    if (Array.isArray(data) && data.length > 0) {
+      const lastElement = data[data.length - 1];
+      if (Array.isArray(lastElement)) {
+        return lastElement[lastElement.length - 1];
+      } else {
+        return lastElement;
+      }
+    }
+    return undefined;
+  };
 
   const showToastMessage = () => {
     toast.info(
@@ -48,17 +60,20 @@ export default function Push({ data, metric, unit, selectedMetric }: Props) {
   useEffect(() => {
     if (isActivated) {
       // if greater than, check if the last element of the array is greater than the user submitted number param
-      if (dropDownValue === 'greaterThan' && number !== undefined) {
-        if (data[data.length - 1] > number) {
-          showToastMessage();
-          onDeactivate();
+      const lastValue = getLastValue(data);
+      if (lastValue !== undefined && number !== undefined) {
+        if (dropDownValue === 'greaterThan') {
+          if (lastValue > number) {
+            showToastMessage();
+            onDeactivate();
+          }
         }
-      }
-      // if less than, check if the last element of the array is less than the user submitted number param
-      else if (dropDownValue === 'lessThan' && number !== undefined) {
-        if (data[data.length - 1] < number) {
-          showToastMessage();
-          onDeactivate();
+        // if less than, check if the last element of the array is less than the user submitted number param
+        else if (dropDownValue === 'lessThan') {
+          if (lastValue < number) {
+            showToastMessage();
+            onDeactivate();
+          }
         }
       }
     }
