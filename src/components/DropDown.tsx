@@ -27,7 +27,7 @@ interface DropDownProps {
 // dropdown for customizable graphs
 export default function DropDown({
   setStateFn,
-  axis,
+  category,
   axisState,
 }: DropDownProps) {
   const handleChange = (event: SelectChangeEvent) => {
@@ -47,10 +47,10 @@ export default function DropDown({
         >
           <MenuItem
             disabled
-            value=''
+            value=""
             sx={{ fontFamily: "'Montserrat', sans-serif" }}
           >
-            <em>Select {axis}</em>
+            <em>Select {category}</em>
           </MenuItem>
           {options.map((option) => (
             <MenuItem

@@ -9,13 +9,14 @@ type Props = {
   data: number[] | number[][];
   metric: string;
   unit: string;
+  selectedMetric: string;
 };
-export default function Push({ data, metric, unit }: Props) {
+export default function Push({ data, metric, unit, selectedMetric }: Props) {
   // declare opened/close state, initialized to false to hide modal on default
   const [isOpened, setIsOpened] = useState(false);
   const [isActivated, setIsActivated] = useState(false);
-  const [dropDownValue, setDropDownValue] = useState('');
-  const [number, setNumber] = useState<number | undefined>();
+  const [dropDownValue, setDropDownValue] = useState('lessThan');
+  const [number, setNumber] = useState<number | undefined>(0);
   const [bellColor, setBellColor] = useState('313641');
 
   const showToastMessage = () => {
@@ -32,13 +33,17 @@ export default function Push({ data, metric, unit }: Props) {
     sound.play();
   };
 
-  const humanMetric = () => {
-    let result = metric.split('_');
-    for (let i = 0; i < result.length; i++) {
-      result[i] = result[i].charAt(0).toUpperCase() + result[i].slice(1);
-    }
-    return result.join(' ');
-  };
+  const humanMetric = metric
+    .split('_')
+    .map((e) => e.charAt(0).toUpperCase() + e.slice(1))
+    .join(' ');
+
+  const formattedSelectedMetric =
+    selectedMetric &&
+    selectedMetric
+      .split('_')
+      .map((e) => e.charAt(0).toUpperCase() + e.slice(1))
+      .join(' ');
 
   useEffect(() => {
     if (isActivated) {
@@ -59,6 +64,10 @@ export default function Push({ data, metric, unit }: Props) {
     }
   }, [data]);
 
+  console.log('humanMetric is: ', humanMetric);
+  console.log('dropdown Value is: ', dropDownValue);
+  console.log('metric is: ', metric);
+
   const onConfirm = () => {
     console.log('alert activated/confirmed');
     setIsActivated(true);
@@ -75,7 +84,7 @@ export default function Push({ data, metric, unit }: Props) {
   };
 
   let deactivateMessage = dropDownValue
-    ? `Active alert: ${humanMetric()} to ${
+    ? `Active alert: ${humanMetric ? humanMetric : formattedSelectedMetric} to ${
         dropDownValue === 'greaterThan' ? 'exceed' : 'fall below'
       } ${number} ${unit}.`
     : `No active alert.`;
@@ -103,8 +112,12 @@ export default function Push({ data, metric, unit }: Props) {
           <BsFillBellFill size={20} color={bellColor} />
         </button>
         <AlertModal
-          title={`Create an Alert for ${humanMetric()}`}
-          deactivateTitle={`Turn Off Alert for ${humanMetric()}`}
+          title={`Create an Alert for ${
+            humanMetric ? humanMetric : formattedSelectedMetric
+          }`}
+          deactivateTitle={`Turn Off Alert for ${
+            humanMetric ? humanMetric : formattedSelectedMetric
+          }`}
           deactivateMessage={deactivateMessage}
           isOpened={isOpened}
           onConfirm={onConfirm}
