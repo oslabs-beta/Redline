@@ -12,7 +12,7 @@ interface scatterProps {
   metrics: MetricCollection[];
 }
 
-// customizable line graph 
+// customizable line graph
 export default function DynamicLineGraph({
   metrics,
 }: scatterProps): JSX.Element {
@@ -65,7 +65,11 @@ export default function DynamicLineGraph({
   return (
     <div className={styles.graphWrapper}>
       <div className={styles.header}>
-        <DropDown axisState={stateY} setStateFn={setStateY} axis={'Y'} />
+        <DropDown
+          axisState={stateY}
+          setStateFn={setStateY}
+          category={'a metric'}
+        />
         <h2>vs Time</h2>
       </div>
       <Line
@@ -86,7 +90,12 @@ export default function DynamicLineGraph({
           },
         }}
       />
-      <Alerts data={lineData} metric={lineTitle} unit={lineUnit} />
+      <Alerts
+        data={lineData}
+        metric={lineTitle}
+        unit={Units[stateY]}
+        selectedMetric={stateY}
+      />
     </div>
   );
 }

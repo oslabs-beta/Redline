@@ -26,6 +26,8 @@ Redline is an open-source tool that displays vital metrics for Redis instances. 
 
 ## Getting Started
 
+### How do you use Redline for applications in production?
+
 Navigate to [Redline](https://redlinemetrics.com) and set up a user account or click straight through to our monitoring tool. _Users who opt to sign up using Auth0 are able to save their Redis instances_.
 
 <img width='600' height='auto' src='https://i.imgur.com/ECMcTXz.gif' alt='getting started'>
@@ -44,6 +46,23 @@ Click the alert icon at the bottom of the chart you’d like to monitor, and ent
 
 <img width='600' height='auto' src='https://i.imgur.com/ti69qJ0.gif' alt='alert gif'>
 
+### How do you use Redline for applications in development?
+
+There are two ways to use the application for development purposes. The first method:
+
+1. First, clone the repository from Github .
+2. Run ```docker build -t redline .``` in your terminal
+3. Run ```docker run -dp 3001:3000 redline``` in your terminal
+4. Navigate to [localhost:3001](http://localhost:3001). You should see the web application and enter your host, port, password (default is empty) and nickname.
+
+Or, simply pull the image from Docker:
+
+1. Navigate to [Docker Hub](https://hub.docker.com/r/sakurakiyama/redline) and pull the image using the command ```docker pull sakurakiyama/redline```
+2. Run ```docker run -dp 3001:3000 sakurakiyama/redline``` in your terminal
+3. Navigate to [localhost:3001](http://localhost:3001). You should see the web application and enter your host, port, password (default is empty) and nickname.
+
+*If you're having any trouble, please refer to the images in the section above.*
+
 ## Tech Stack
 
 Next.js | Typescript | React.js | PostgreSQL | Auth0 | Chart.js | SASS/CSS | Jest | Docker
@@ -52,7 +71,7 @@ Next.js | Typescript | React.js | PostgreSQL | Auth0 | Chart.js | SASS/CSS | Jes
 
 1. Clone the repo and make a new branch
 2. Run ```docker build -t redline .``` in your terminal
-3. Run ```docker run -dp 3000:3000 redline``` in your terminal
+3. Run ```docker run -dp 3001:3000 redline``` in your terminal
 4. Add a feature, fix a big or refactor some code
 5. Write/update tests for the changes you made, if necessary
 6. Run unit tests and make sure all tests pass: npm test

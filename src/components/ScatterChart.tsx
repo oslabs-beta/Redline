@@ -80,9 +80,9 @@ export default function ScatterChart({ metrics }: scatterProps): JSX.Element {
   return (
     <div className={styles.graphWrapper}>
       <div className={styles.header}>
-        <DropDown axisState={stateY} setStateFn={setStateY} axis={'Y'}/>
+        <DropDown axisState={stateY} setStateFn={setStateY} category={'a metric (Y-axis)'}/>
         <h2>vs</h2>
-        <DropDown axisState={stateX} setStateFn={setStateX} axis={'X'}/>        
+        <DropDown axisState={stateX} setStateFn={setStateX} category={'a metric (X-axis)'}/>        
       </div>
       <Scatter
         data={ data }

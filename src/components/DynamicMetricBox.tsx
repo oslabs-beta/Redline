@@ -16,7 +16,7 @@ export default function DynamicMetricBox({ metrics, deleteFn, id }: boxProps) {
 
   return (
     <div className={styles.graphWrapper}>
-      <DropDown setStateFn={setCurrMetrics} axisState={currMetric} axis={'metric'}/>
+      <DropDown setStateFn={setCurrMetrics} axisState={currMetric} category={'a metric'}/>
       <h1>{ (metrics && currMetric != '') ? `${metrics[currMetric]} ${Units[currMetric]}` : ''}</h1>
       <div className={styles.buttonDiv}>
         <Alerts data={metrics ? [metrics[currMetric]] : [NaN]} 

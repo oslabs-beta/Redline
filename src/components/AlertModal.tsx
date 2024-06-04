@@ -98,7 +98,6 @@ export default function AlertModal({
               id=""
               required
             >
-              <option value="">Select:</option>
               <option value="lessThan">Fall below</option>
               <option value="greaterThan">Exceed</option>
             </select>
@@ -108,6 +107,7 @@ export default function AlertModal({
               defaultValue="0"
               type="number"
               name="unit"
+              id="unit"
               onChange={(event) => setNumber(+event.target.value)}
             />
             <label htmlFor="unit"> {unit}</label>
