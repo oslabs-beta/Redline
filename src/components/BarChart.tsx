@@ -48,7 +48,7 @@ export default function BarChart({ barData, name, labels }: barProps) {
     <div className={styles.graphWrapper}>
       <h2>{name}</h2>
       <Bar options={options} data={data} />
-      <Alerts data={barData} metric={metric} unit={unit}/>
+      <Alerts data={[]} metric={metric} unit={unit}/>
     </div>
   );
 }
